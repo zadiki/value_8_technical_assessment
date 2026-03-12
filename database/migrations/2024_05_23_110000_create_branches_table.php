@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->foreignId('user_id')->on('users')->constrained()->onDelete('set null')->nullable();
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('set null')->nullable();
             $table->timestamps();
         });
     }

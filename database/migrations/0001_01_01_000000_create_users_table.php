@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('set null')->nullable();
+            $table->string('role');
+            $table->rememberToken()->nullable();
             $table->timestamps();
         });
 

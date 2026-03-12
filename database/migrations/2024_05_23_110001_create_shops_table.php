@@ -14,7 +14,14 @@ return new class extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('branch_id')->constrained()->onDelete('cascade');
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('shop_code');
+            $table->foreignId('branch_id')->on('branches')->constrained()->onDelete('cascade')->nullable();
+            $table->foreign('manager_id')->references('id')->on('users')->onDelete('set null')->nullable();
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('set null')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
