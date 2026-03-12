@@ -10,7 +10,8 @@
     <div class="min-h-screen flex flex-col items-center justify-center">
         <!-- Login Form -->
         <div class="w-full max-w-md bg-white rounded-lg shadow-md p-8">
-            <h2 class="text-2xl font-bold text-center text-gray-800 mb-8">Welcome Back</h2>
+            <h2 class="text-2xl font-bold text-center text-gray-800 mb-8">Welcome </h2>
+
 
             <!-- Session Status -->
             @if (session('status'))
