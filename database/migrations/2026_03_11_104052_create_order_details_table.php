@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->references('id')->on('orders')->onDelete('cascade');
-            $table->foreignId('product_id')->references('id')->on('products');
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('product_id');
             $table->integer('ordered_quantity')->default(0);
             $table->integer('dispatched_quantity')->default(0);
             $table->integer('received_quantity')->default(0);
             $table->decimal('unit_cost', 10, 2)->default(0);
             $table->decimal('total_price', 10, 2)->default(0);
-            $table->foreign('delivery_note_id')->references('id')->on('delivery_notes')->nullable();
-            $table->foreign('updated_by')->references('id')->on('users')->nullable();
+            $table->unsignedBigInteger('delivery_note_id')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

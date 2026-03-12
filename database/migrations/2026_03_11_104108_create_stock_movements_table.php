@@ -13,6 +13,18 @@ return new class extends Migration
     {
         Schema::create('stock_movements', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('product_id');
+            $table->integer('quantity')->default(0);
+            $table->decimal('cost_price', 10, 2)->default(0);
+            $table->integer('transaction_type')->default(0); // 0 for incoming, 1 for outgoing
+            $table->integer('reference_type')->default(0); // 0 for order, 1 for sale, 2 for adjustment
+            $table->unsignedBigInteger('reference_id')->nullable();
+            $table->unsignedBigInteger('inventory_id')->nullable();
+            $table->unsignedBigInteger('shop_id')->nullable();
+            $table->unsignedBigInteger('branch_id')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('approved_by')->nullable();
+            $table->integer('approval_status')->default(0);    // 0 for pending
             $table->timestamps();
         });
     }
