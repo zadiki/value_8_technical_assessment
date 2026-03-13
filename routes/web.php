@@ -1,23 +1,36 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+Route::middleware('guest')->group(function () {
+    // Display the Login Form
+    Route::get('login', [AuthenticatedSessionController::class, 'create'])
+        ->name('login');
+    // Handle the Register Submission
+    Route::post('register', [AuthenticatedSessionController::class, 'register']);
 
-Route::get('/register', function () {
-    return view('register');
-})->name('register');
+    // Handle the Login Submission
+    Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
-Route::get('/password/request', function () {
-    return view('password.request');
-})->name('password.request');
+    Route::get('resetpassword', function () {
+        return view('auth.reset-password');
+    })->name('reset-password');
+    // Handle password reset submission
+    Route::post('resetpassword', function () {
+        // Handle password reset logic here
+    })->name('reset-password.post');
+});
 
-Route::get('/password/reset', function () {
-    return view('password.reset');
-})->name('password.reset');
+Route::middleware('auth')->group(function () {
+    // The Dashboard (where users go after login)
+    Route::get('/', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
-Route::get('/email/verify', function () {
-    return view('verification.notice');
-})->name('verification.notice');
+    // Handle Logout
+    Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('logout');
+    Route::get('register', [AuthenticatedSessionController::class, 'createRegistration'])
+        ->name('register');
+});

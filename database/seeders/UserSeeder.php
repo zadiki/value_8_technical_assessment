@@ -16,6 +16,8 @@ class UserSeeder extends Seeder
         // Create 10 random users using the UserFactory
         User::factory(10)->create([
             'password' => '12345678',
+            'role' => User::ROLE_STORE_MGR,
+            'avatar' => 'https://ui-avatars.com/api/?name=John+Doe&background=random'
         ]);
     }
 }

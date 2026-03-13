@@ -17,7 +17,6 @@ return new class extends Migration
             $table->unsignedBigInteger('ordered_by')->nullable();
             $table->unsignedBigInteger('branch_id')->nullable();
             $table->integer('order_type')->default(0); // 0 for branch order, 1 for shop order
-
             $table->string('lpo_number')->nullable();
             $table->integer('total_items')->default(0);
             $table->decimal('total_amount', 10, 2)->default(0);

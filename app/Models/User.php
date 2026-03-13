@@ -16,8 +16,8 @@ class User extends Authenticatable
 
 
     const ROLE_ADMIN = 'administrator';
-    const ROLE_BRANCH_MGR = 'branch_manager'; 
-    const ROLE_STORE_MGR = 'store_manager'; 
+    const ROLE_BRANCH_MGR = 'branch_manager';
+    const ROLE_STORE_MGR = 'store_manager';
 
 
     /**
@@ -52,16 +52,19 @@ class User extends Authenticatable
         ];
     }
 
-  
-    public function isAdministrator() {
+
+    public function isAdministrator()
+    {
         return $this->role === self::ROLE_ADMIN;
     }
 
-    public function isBranchManager() {
+    public function isBranchManager()
+    {
         return $this->role === self::ROLE_BRANCH_MGR;
     }
 
-    public function isStoreManager() {
+    public function isStoreManager()
+    {
         return $this->role === self::ROLE_STORE_MGR;
     }
 
