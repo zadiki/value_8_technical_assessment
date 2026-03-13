@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ProductServiceInterface;
 use Illuminate\Http\Request;
 
-use App\Models\Product;
 
 
 class ProductController extends Controller
 {
+    private $productService;
+    public function __construct(ProductServiceInterface $productService)
+    {
+        $this->productService = $productService;
+    }
     public function getActiveProducts(Request $request)
     {
-        $products = Product::where('is_active', true)->paginate(20);
+        $products = $this->productService->getProductByActiveStatus(true);
         return response()->json($products);
     }
 }
