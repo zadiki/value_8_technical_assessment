@@ -15,9 +15,9 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
 
-    const ROLE_ADMIN = 'administrator';
-    const ROLE_BRANCH_MGR = 'branch_manager';
-    const ROLE_STORE_MGR = 'store_manager';
+    const ROLE_ADMINISTRATOR = 'administrator';
+    const ROLE_BRANCH_MANAGER = 'branch_manager';
+    const ROLE_STORE_MANAGER = 'store_manager';
 
 
     /**
