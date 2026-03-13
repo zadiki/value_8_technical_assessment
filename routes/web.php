@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -29,8 +30,16 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
+
+
     Route::get('/products/active', [ProductController::class, 'getActiveProducts'])
         ->name('dashboard');
+
+
+    Route::get('/users/active-users', [UserController::class, 'getAllActiveUsers'])
+        ->name('activeUsers');
+
+
 
 
 
