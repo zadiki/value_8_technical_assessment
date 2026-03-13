@@ -10,40 +10,55 @@ class MenuHelper
             [
                 'icon' => 'dashboard',
                 'name' => 'Dashboard',
+                'path' => '/',
+            ],
+            [
+                'icon' => 'dashboard',
+                'name' => 'Orders',
                 'subItems' => [
-                    ['name' => 'Ecommerce', 'path' => '/'],
-                ],
+                    ['name' => 'Order List', 'path' => '/orders', 'pro' => false],
+                    ['name' => 'Requeste Order', 'path' => '/add-order', 'pro' => false],
+                    ['name' => 'Incoming Order', 'path' => '/edit-order', 'pro' => false],
+                ]
+
             ],
             [
                 'icon' => 'calendar',
-                'name' => 'Calendar',
-                'path' => '/calendar',
-            ],
-            [
-                'icon' => 'user-profile',
-                'name' => 'User Profile',
-                'path' => '/profile',
-            ],
-            [
-                'name' => 'Forms',
-                'icon' => 'forms',
+                'name' => 'Products',
                 'subItems' => [
-                    ['name' => 'Form Elements', 'path' => '/form-elements', 'pro' => false],
+                    ['name' => 'Product List', 'path' => '/products/active', 'pro' => false],
+                    ['name' => 'Add Product', 'path' => '/add-product', 'pro' => false],
+                    ['name' => 'Edit Product', 'path' => '/edit-product', 'pro' => false],
+                ]
+
+            ],
+
+            [
+                'icon' => 'forms',
+                'name' => 'Inventory',
+                'subItems' => [
+                    ['name' => 'Shop Inventory', 'path' => '/shop-inventory', 'pro' => false],
+                    ['name' => 'Branch Inventory', 'path' => '/branch-inventory', 'pro' => false],
+                    ['name' => 'Master Inventory', 'path' => '/master-inventory', 'pro' => false],
                 ],
             ],
             [
-                'name' => 'Tables',
+                'name' => 'Sales',
                 'icon' => 'tables',
                 'subItems' => [
-                    ['name' => 'Basic Tables', 'path' => '/basic-tables', 'pro' => false]
+                    ['name' => 'Shop Sales', 'path' => '/shop-sales', 'pro' => false],
+                    ['name' => 'Branch Sales', 'path' => '/branch-sales', 'pro' => false],
+                    ['name' => 'Master Sales', 'path' => '/master-sales', 'pro' => false],
+                    ['name' => 'Sales Report', 'path' => '/sales-report', 'pro' => false],
+
                 ],
             ],
             [
-                'name' => 'Pages',
+                'name' => 'Management',
                 'icon' => 'pages',
                 'subItems' => [
-                    ['name' => 'Blank Page', 'path' => '/blank', 'pro' => false],
-                    ['name' => '404 Error', 'path' => '/error-404', 'pro' => false]
+                    ['name' => 'System Users', 'path' => '/view_users', 'pro' => false],
+                    ['name' => 'Create User', 'path' => '/create-user', 'pro' => false]
                 ],
             ],
         ];
@@ -90,10 +105,10 @@ class MenuHelper
                 'title' => 'Menu',
                 'items' => self::getMainNavItems()
             ],
-            [
-                'title' => 'Others',
-                'items' => self::getOthersItems()
-            ]
+            // [
+            //     'title' => 'Others',
+            //     'items' => self::getOthersItems()
+            // ]
         ];
     }
 

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('market_unit_cost', 8, 2);
             $table->string('brand');
             $table->string('manufacturer');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
