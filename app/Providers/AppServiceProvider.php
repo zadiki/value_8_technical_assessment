@@ -18,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Interfaces\DeliveryNoteServiceInterface', 'App\Services\DeliveryNoteService');
         $this->app->bind('App\Interfaces\SaleServiceInterface', 'App\Services\SaleService');
         $this->app->bind('App\Interfaces\BranchServiceInterface', 'App\Services\BranchService');
+        $this->app->bind('App\Interfaces\ProductServiceInterface', 'App\Services\ProductService');
     }
 
     /**

@@ -20,4 +20,8 @@ class SaleService implements SaleServiceInterface
     {
         // Logic to retrieve details of a specific sale
     }
+    public function getSalesPerShop($shopId)
+    {
+        // Logic to retrieve sales data for a specific shop
+    }
 }
