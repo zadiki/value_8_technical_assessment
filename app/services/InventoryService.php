@@ -66,4 +66,14 @@ class InventoryService implements InventoryServiceInterface
 
         return $centralWarehouseInventory;
     }
+
+    public static function createStockMovementAfterSale(Saledetail $saleDetail, Sale $sale, Inventory $inventory)
+    {
+        $stockMovement = new StockMovement;
+        $stockMovement->shop_id = $sale->shop_id;
+        $stockMovement->product_id = $saleDetail->product_id;
+        $stockMovement->quantity_changed = -$saleDetail->quantity;
+        $stockMovement->movement_type = StockMovement::MOVEMENT_TYPE_SALE;
+        $stockMovement->save();
+    }
 }
