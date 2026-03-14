@@ -9,12 +9,12 @@ class OrderPolicy
 {
     public function view(User $user, Order $order): bool
     {
-        // Store Managers can only view orders from their own store
-        if ($user->role === User::ROLE_STORE_MANAGER) {
+        // Shop Managers can only view orders from their own shop
+        if ($user->role === User::ROLE_SHOP_MANAGER) {
             return $user->shop_id === $order->shop_id;
         }
 
-        // Branch Managers can view orders from any store within their branch
+        // Branch Managers can view orders from any shop within their branch
         if ($user->role === User::ROLE_BRANCH_MANAGER) {
             return $user->branch_id === $order->shop->branch_id;
         }

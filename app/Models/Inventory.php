@@ -8,5 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Inventory extends Model
 {
     use HasFactory;
+
     //
+    const INVENTORY_LOCATION_TYPE_BRANCH = 1;
+
+    const INVENTORY_LOCATION_TYPE_SHOP = 2;
+
+    const INVENTORY_LOCATION_TYPE_CENTRAL_WAREHOUSE = 3;
 }

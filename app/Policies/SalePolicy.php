@@ -10,12 +10,12 @@ class SalePolicy
 {
     public function makesale(User $user, Shop $shop): bool
     {
-        // Store Managers can only make sales from their own store
-        if ($user->role === User::ROLE_STORE_MANAGER) {
+        // Shop Managers can only make sales from their own shop
+        if ($user->role === User::ROLE_SHOP_MANAGER) {
             return $user->shop_id === $shop->id;
         }
 
-        // Branch Managers can make sales from any store within their branch
+        // Branch Managers can make sales from any shop within their branch
         if ($user->role === User::ROLE_BRANCH_MANAGER) {
             return $user->branch_id === $shop->branch_id;
         }

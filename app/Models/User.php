@@ -18,7 +18,7 @@ class User extends Authenticatable
 
     const ROLE_BRANCH_MANAGER = 'branch_manager';
 
-    const ROLE_STORE_MANAGER = 'store_manager';
+    const ROLE_SHOP_MANAGER = 'shop_manager';
 
     /**
      * The attributes that are mass assignable.
@@ -54,17 +54,17 @@ class User extends Authenticatable
 
     public function isAdministrator()
     {
-        return $this->role === self::ROLE_ADMIN;
+        return $this->role === self::ROLE_ADMINISTRATOR;
     }
 
     public function isBranchManager()
     {
-        return $this->role === self::ROLE_BRANCH_MGR;
+        return $this->role === self::ROLE_BRANCH_MANAGER;
     }
 
-    public function isStoreManager()
+    public function isShopManager()
     {
-        return $this->role === self::ROLE_STORE_MGR;
+        return $this->role === self::ROLE_SHOP_MANAGER;
     }
 
     /**

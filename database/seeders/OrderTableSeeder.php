@@ -14,7 +14,7 @@ class OrderTableSeeder extends Seeder
     public function run(): void
     {
         // shop manager user
-        $shopmanagers = User::where('role', User::ROLE_STORE_MANAGER)->get();
+        $shopmanagers = User::where('role', User::ROLE_SHOP_MANAGER)->get();
         foreach ($shopmanagers as $shopmanager) {
 
             Order::factory(10)->create([

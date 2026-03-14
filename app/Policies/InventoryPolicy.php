@@ -4,15 +4,10 @@ namespace App\Policies;
 
 use App\Models\Shop;
 use App\Models\StockMovement;
-use App\Models\Store;
 use App\Models\User;
 
 class InventoryPolicy
 {
-    /**
-     * Authorize stock movements (Transfers/Sales)
-     * Models: Administrator, Branch Manager, Store Manager
-     */
     public function moveStock(User $user, Shop $fromShop, Shop $toShop, StockMovement $movement): bool
     {
         // 1. Administrators have global access across all branches
@@ -20,28 +15,52 @@ class InventoryPolicy
             return true;
         }
 
-        // 2. Branch Managers: Can move stock within their specific branch
-        // Covers: Intra-branch transfers
-        if ($user->role === User::ROLE_BRANCH_MANAGER) {
-            $isWithinBranch = $toShop && ($fromShop->branch_id === $toShop->branch_id);
+        return false;
+    }
 
-            return $user->branch_id === $fromShop->branch_id && $isWithinBranch;
+    public function adjust(User $user): bool
+    {
+        // Restricted to Admin to guarantee Stock Accuracy and Auditability [cite: 23, 26, 28]
+        return $user->role === User::ROLE_ADMINISTRATOR;
+    }
+
+    public function viewShopInventory(User $user, Shop $shop): bool
+    {
+        // 1. Administrators have global access across all branches
+        if ($user->role === User::ROLE_ADMINISTRATOR) {
+            return true;
+        }
+        if ($user->role === User::ROLE_BRANCH_MANAGER && $user->branch_id === $shop->branch_id) {
+            return true;
         }
 
-        // 3. Store Managers: Can only perform sales or initiate transfers from their own store [cite: 17, 23]
-        if ($user->role === User::ROLE_STORE_MANAGER) {
-            return $user->shop_id === $fromShop->id;
+        if ($user->role === User::ROLE_SHOP_MANAGER && $user->shop_id === $shop->id) {
+            return true;
         }
 
         return false;
     }
 
-    /**
-     * Determine if user can perform stock adjustments
-     */
-    public function adjust(User $user): bool
+    public function viewBranchInventory(User $user, Branch $branch): bool
     {
-        // Restricted to Admin to guarantee Stock Accuracy and Auditability [cite: 23, 26, 28]
-        return $user->role === User::ROLE_ADMINISTRATOR;
+        // 1. Administrators have global access across all branches
+        if ($user->role === User::ROLE_ADMINISTRATOR) {
+            return true;
+        }
+        if ($user->role === User::ROLE_BRANCH_MANAGER && $user->branch_id === $branch->id) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function viewCentralWarehouseInventory(User $user): bool
+    {
+        // 1. Administrators have global access across all branches
+        if ($user->role === User::ROLE_ADMINISTRATOR) {
+            return true;
+        }
+
+        return false;
     }
 }

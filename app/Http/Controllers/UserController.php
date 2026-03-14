@@ -73,9 +73,12 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
+            'shop_id' => 'nullable|integer|exists:shops,id',
+            'branch_id' => 'nullable|integer|exists:branches,id',
+            'role' => 'required|string|in:'.User::ROLE_ADMINISTRATOR.','.User::ROLE_SHOP_MANAGER.','.User::ROLE_BRANCH_MANAGER,
         ]);
 
-        $user = $this->userService->createUser($request->only(['name', 'email', 'password']));
+        $user = $this->userService->createUser($request->only(['name', 'email', 'password', 'shop_id', 'branch_id', 'role']));
 
         return response()->json([
             'status' => 'success',
@@ -93,7 +96,7 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255|unique:users,email,'.$request->id,
         ]);
 
-        $this->userService->editUser($request->only(['name', 'email']), $request->id);
+        $this->userService->editUser($request->only(['name', 'email', 'shop_id', 'branch_id', 'role']), $request->id);
 
         return response()->json([
             'status' => 'success',

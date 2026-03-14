@@ -45,10 +45,10 @@ class AuthServiceProvider extends ServiceProvider
             return $user->role === User::ROLE_BRANCH_MANAGER && $user->branch_id === $branch->id;
         });
         Gate::define('manage-shop', function (User $user, $shop) {
-            return $user->role === User::ROLE_STORE_MANAGER && $user->shop_id === $shop->id;
+            return $user->role === User::ROLE_SHOP_MANAGER && $user->shop_id === $shop->id;
         });
         Gate::define('make-sale', function (User $user, $shop) {
-            if ($user->role === User::ROLE_STORE_MANAGER) {
+            if ($user->role === User::ROLE_SHOP_MANAGER) {
                 return $user->shop_id === $shop->id;
             }
 
@@ -59,7 +59,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('edit-user-details', function (User $user, User $targetUser) {
-            // Admins can edit any user, Branch Managers can edit users in their branch, Store Managers can edit users in their store
+            // Admins can edit any user, Branch Managers can edit users in their branch, Shop Managers can edit users in their shop
             if ($user->role === User::ROLE_ADMINISTRATOR) {
                 return true;
             }
@@ -68,7 +68,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('edit-user-password', function (User $user, User $targetUser) {
-            // Admins can edit any user, Branch Managers can edit users in their branch, Store Managers can edit users in their store
+
             if ($user->role === User::ROLE_ADMINISTRATOR) {
                 return true;
             }

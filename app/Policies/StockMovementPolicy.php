@@ -7,7 +7,7 @@ class StockMovementPolicy
     public function viewAllStockmovements(User $user): bool
     {
         if ($user->role === User::ROLE_ADMINISTRATOR || $user->role === User::ROLE_BRANCH_MANAGER) {
-            return true; // Store Managers can view stock movements related to their store through orders and delivery notes
+            return true;
         }
 
         return false; // No direct access to stock movements
@@ -15,11 +15,11 @@ class StockMovementPolicy
 
     public function viewShopStockmovements(User $user, Shop $shop): bool
     {
-        if ($user->role === User::ROLE_STORE_MANAGER) {
-            return $user->shop_id === $shop->id; // Store Managers can view stock movements related to their store
+        if ($user->role === User::ROLE_SHOP_MANAGER) {
+            return $user->shop_id === $shop->id; // Shop Managers can view stock movements related to their shop
         }
         if ($user->role === User::ROLE_BRANCH_MANAGER) {
-            return $user->branch_id === $shop->branch_id; // Branch Managers can view stock movements for any store in their branch
+            return $user->branch_id === $shop->branch_id; // Branch Managers can view stock movements for any shop in their branch
         }
         if ($user->role === User::ROLE_ADMINISTRATOR) {
             return true; // Administrators have global access
