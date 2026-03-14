@@ -18,9 +18,27 @@ class InventoryPolicy
         return false;
     }
 
-    public function adjust(User $user): bool
+    public function adjustQuantity(User $user): bool
     {
         // Restricted to Admin to guarantee Stock Accuracy and Auditability [cite: 23, 26, 28]
+        return $user->role === User::ROLE_ADMINISTRATOR;
+    }
+
+    public function adjustSellingPrice(User $user): bool
+    {
+        // Restricted to Admin to guarantee Pricing Accuracy and Auditability [cite: 23, 26, 28]
+        return $user->role === User::ROLE_ADMINISTRATOR;
+    }
+
+    public function adjustUnitCost(User $user): bool
+    {
+        // Restricted to Admin to guarantee Cost Accuracy and Auditability [cite: 23, 26, 28]
+        return $user->role === User::ROLE_ADMINISTRATOR;
+    }
+
+   public function adjustReorderLevel(User $user): bool
+    {
+        // Restricted to Admin to guarantee Reorder Level Accuracy and Auditability [cite: 23, 26, 28]
         return $user->role === User::ROLE_ADMINISTRATOR;
     }
 
