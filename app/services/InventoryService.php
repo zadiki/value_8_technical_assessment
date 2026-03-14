@@ -73,7 +73,11 @@ class InventoryService implements InventoryServiceInterface
         $stockMovement->shop_id = $sale->shop_id;
         $stockMovement->product_id = $saleDetail->product_id;
         $stockMovement->quantity_changed = -$saleDetail->quantity;
-        $stockMovement->movement_type = StockMovement::MOVEMENT_TYPE_SALE;
+        $stockMovement->transaction_type = StockMovement::TRANSACTION_TYPE_OUT;
+        $stockMovement->reference_type = StockMovement::REFERENCE_TYPE_SALE_OUT;
+        $stockMovement->reference_id = $saleDetail->id;
+        $stockMovement->approval_status = StockMovement::APPROVAL_STATUS_APPROVED;
+        $stockMovement->created_by = $sale->created_by;
         $stockMovement->save();
     }
 }

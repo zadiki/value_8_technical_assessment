@@ -10,6 +10,24 @@ class Sale extends Model
     use HasFactory;
     //
 
+    const SALE_TYPE_CASH = 0;
+
+    const SALE_TYPE_CREDIT = 1;
+
+    const PAYMENT_METHOD_CASH = 0;
+
+    const PAYMENT_METHOD_MPESA = 1;
+
+    const PAYMENT_METHOD_CARD = 2;
+
+    const PAYMENT_METHOD_BANK = 3;
+
+    const PAYMENT_STATUS_PENDING = 0;
+
+    const PAYMENT_STATUS_PAID = 1;
+
+    const PAYMENT_STATUS_PARTIAL_PAID = 2;
+
     protected static function boot()
     {
         parent::boot();

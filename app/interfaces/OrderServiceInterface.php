@@ -11,4 +11,6 @@ interface OrderServiceInterface
     public function updateOrderStatus($orderId, $status);
 
     public function cancelOrder($orderId);
+
+    public function createOrderDetails($orderId, $orderDetailsData);
 }
