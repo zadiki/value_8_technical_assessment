@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Interfaces\BranchServiceInterface', 'App\Services\BranchService');
         $this->app->bind('App\Interfaces\ProductServiceInterface', 'App\Services\ProductService');
     }
+  
 
     /**
      * Bootstrap any application services.
@@ -39,51 +40,6 @@ class AppServiceProvider extends ServiceProvider
             );
         });
 
-        Gate::before(function ($user) {
-            return $user->role === User::ROLE_ADMINISTRATOR ? true : null;
-        });
-
-        Gate::define('view-branch-audit', function (User $user) {
-            return in_array($user->role, [User::ROLE_ADMINISTRATOR, User::ROLE_BRANCH_MANAGER]);
-        });
-
-        Gate::define('manage-branch', function (User $user, $branch) {
-            return $user->role === User::ROLE_BRANCH_MANAGER && $user->branch_id === $branch->id;
-        });
-        Gate::define('manage-shop', function (User $user, $shop) {
-            return $user->role === User::ROLE_STORE_MANAGER && $user->shop_id === $shop->id;
-        });
-        Gate::define('make-sale', function (User $user, $shop) {
-            if ($user->role === User::ROLE_STORE_MANAGER) {
-                return $user->shop_id === $shop->id;
-            }
-
-            return false;
-        });
-        Gate::define('adjust-inventory', function (User $user) {
-            return $user->role === User::ROLE_ADMINISTRATOR;
-        });
-
-        Gate::define('edit-user-details', function (User $user, User $targetUser) {
-            // Admins can edit any user, Branch Managers can edit users in their branch, Store Managers can edit users in their store
-            if ($user->role === User::ROLE_ADMINISTRATOR) {
-                return true;
-            }
-
-            return false;
-        });
-
-        Gate::define('edit-user-password', function (User $user, User $targetUser) {
-            // Admins can edit any user, Branch Managers can edit users in their branch, Store Managers can edit users in their store
-            if ($user->role === User::ROLE_ADMINISTRATOR) {
-                return true;
-            }
-
-            return false;
-        });
-
-        Gate::define('view-sales-report', function (User $user) {
-            return in_array($user->role, [User::ROLE_ADMINISTRATOR, User::ROLE_BRANCH_MANAGER]);
-        });
+        
     }
 }
