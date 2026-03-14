@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\DeliveryNote;
 use App\Models\Order;
 use Illuminate\Database\Seeder;
-use App\Models\DeliveryNote;
 
 class DeliveryNoteTableSeeder extends Seeder
 {

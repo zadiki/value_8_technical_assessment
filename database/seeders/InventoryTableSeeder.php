@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
+use App\Models\Branch;
 use App\Models\Inventory;
 use App\Models\Product;
 use App\Models\Shop;
-use App\Models\Branch;
-
+use Illuminate\Database\Seeder;
 
 class InventoryTableSeeder extends Seeder
 {

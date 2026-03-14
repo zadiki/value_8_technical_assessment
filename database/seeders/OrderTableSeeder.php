@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Order;
 use App\Models\User;
-
+use Illuminate\Database\Seeder;
 
 class OrderTableSeeder extends Seeder
 {
@@ -24,12 +23,12 @@ class OrderTableSeeder extends Seeder
             ]);
         }
         $branchmanagers = User::where('role', User::ROLE_BRANCH_MANAGER)->get();
-        foreach ($branchmanagers as $branchmanager) {   
+        foreach ($branchmanagers as $branchmanager) {
 
             Order::factory(10)->create([
                 'branch_id' => $branchmanager->branch_id,
                 'ordered_by' => $branchmanager->id,
             ]);
-        }   
+        }
     }
 }
