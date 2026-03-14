@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\User;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,7 +22,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Interfaces\BranchServiceInterface', 'App\Services\BranchService');
         $this->app->bind('App\Interfaces\ProductServiceInterface', 'App\Services\ProductService');
     }
-  
 
     /**
      * Bootstrap any application services.
@@ -40,6 +37,5 @@ class AppServiceProvider extends ServiceProvider
             );
         });
 
-        
     }
 }

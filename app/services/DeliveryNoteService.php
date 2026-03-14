@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Services;
+
 use App\Interfaces\DeliveryNoteServiceInterface;
 
 class DeliveryNoteService implements DeliveryNoteServiceInterface
@@ -11,7 +13,7 @@ class DeliveryNoteService implements DeliveryNoteServiceInterface
         return [
             'status' => 'success',
             'message' => 'Delivery note created successfully',
-            'data' => $data
+            'data' => $data,
         ];
     }
 
@@ -27,10 +29,10 @@ class DeliveryNoteService implements DeliveryNoteServiceInterface
                 'customer_name' => 'John Doe',
                 'items' => [
                     ['name' => 'Item 1', 'quantity' => 2],
-                    ['name' => 'Item 2', 'quantity' => 1]
+                    ['name' => 'Item 2', 'quantity' => 1],
                 ],
-                'total_price' => 100.00
-            ]
+                'total_price' => 100.00,
+            ],
         ];
     }
 }

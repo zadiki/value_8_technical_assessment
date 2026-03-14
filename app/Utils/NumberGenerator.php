@@ -8,9 +8,6 @@ class NumberGenerator
 {
     /**
      * Generate an LPO number in the format LPO-SH-YYMMDD-XX.
-     *
-     * @param int $number
-     * @return string
      */
     public static function generateLpoNumber(int $number, string $shop_code): string
     {
@@ -22,10 +19,6 @@ class NumberGenerator
 
     /**
      * Generate a delivery note number in the format DN-SH-YYMMDD-XX.
-     *
-     * @param int $number
-     * @param string $shop_code
-     * @return string
      */
     public static function generateDeliveryNoteNumber(int $number, string $shop_code): string
     {
@@ -37,9 +30,6 @@ class NumberGenerator
 
     /**
      * Generate a three-character shop code from a shop name.
-     *
-     * @param string $shopName
-     * @return string
      */
     public static function generateShopCode(string $shopName): string
     {

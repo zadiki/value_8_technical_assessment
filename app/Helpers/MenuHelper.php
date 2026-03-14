@@ -19,7 +19,7 @@ class MenuHelper
                     ['name' => 'Order List', 'path' => '/orders', 'pro' => false],
                     ['name' => 'Requeste Order', 'path' => '/add-order', 'pro' => false],
                     ['name' => 'Incoming Order', 'path' => '/edit-order', 'pro' => false],
-                ]
+                ],
 
             ],
             [
@@ -29,7 +29,7 @@ class MenuHelper
                     ['name' => 'Product List', 'path' => '/products/active', 'pro' => false],
                     ['name' => 'Add Product', 'path' => '/add-product', 'pro' => false],
                     ['name' => 'Edit Product', 'path' => '/edit-product', 'pro' => false],
-                ]
+                ],
 
             ],
 
@@ -58,7 +58,7 @@ class MenuHelper
                 'icon' => 'pages',
                 'subItems' => [
                     ['name' => 'System Users', 'path' => '/view_users', 'pro' => false],
-                    ['name' => 'Create User', 'path' => '/create-user', 'pro' => false]
+                    ['name' => 'Create User', 'path' => '/create-user', 'pro' => false],
                 ],
             ],
         ];
@@ -72,7 +72,7 @@ class MenuHelper
                 'name' => 'Charts',
                 'subItems' => [
                     ['name' => 'Line Chart', 'path' => '/line-chart', 'pro' => false],
-                    ['name' => 'Bar Chart', 'path' => '/bar-chart', 'pro' => false]
+                    ['name' => 'Bar Chart', 'path' => '/bar-chart', 'pro' => false],
                 ],
             ],
             [
@@ -103,7 +103,7 @@ class MenuHelper
         return [
             [
                 'title' => 'Menu',
-                'items' => self::getMainNavItems()
+                'items' => self::getMainNavItems(),
             ],
             // [
             //     'title' => 'Others',

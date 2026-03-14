@@ -11,12 +11,15 @@ class ShopService implements ShopServiceInterface
     {
         // Logic to create a new shop
     }
+
     public function getShopDetails($shopId)
     {        // Logic to retrieve details of a specific shop
     }
+
     public function updateShop($shopId, $shopData)
     {        // Logic to update details of a specific shop
     }
+
     public function deleteShop($shopId)
     {        // Logic to delete a specific shop
     }

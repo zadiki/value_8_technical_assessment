@@ -1,0 +1,30 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\Order;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends Factory<Order>
+ */
+class OrderFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            //
+            'lpo_number' => fake()->unique()->numerify('LPO-#####'),
+            'shop_id' => null,
+            'branch_id' => null,
+            'ordered_by' => fake()->randomElement([1, 2, 3, 4, 5]),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ];
+    }
+}

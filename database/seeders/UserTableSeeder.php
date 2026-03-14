@@ -3,10 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class UserSeeder extends Seeder
+class UserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,19 +19,19 @@ class UserSeeder extends Seeder
         User::factory(1)->create([
             'password' => '12345678',
             'role' => User::ROLE_ADMINISTRATOR,
-            "email" => "zadiki@admin.com"
+            'email' => 'zadiki@admin.com',
 
         ]);
         User::factory(1)->create([
             'password' => '12345678',
             'role' => User::ROLE_BRANCH_MANAGER,
-            "email" => "zadiki@branch.com"
+            'email' => 'zadiki@branch.com',
 
         ]);
         User::factory(1)->create([
             'password' => '12345678',
             'role' => User::ROLE_STORE_MANAGER,
-            "email" => "zadiki@store.com"
+            'email' => 'zadiki@store.com',
 
         ]);
 

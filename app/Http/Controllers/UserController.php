@@ -12,6 +12,7 @@ class UserController extends Controller
     public function getAllActiveUsers(Request $request)
     {
         $users = User::where('is_active', true)->paginate(20);
+
         return response()->json($users);
     }
 }

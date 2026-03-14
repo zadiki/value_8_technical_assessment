@@ -3,27 +3,28 @@
 namespace App\Policies;
 
 use App\Models\Shop;
-use App\Models\User;
-use App\Models\Store;
 use App\Models\StockMovement;
+use App\Models\Store;
+use App\Models\User;
 
 class InventoryPolicy
 {
     /**
      * Authorize stock movements (Transfers/Sales)
-     * Models: Administrator, Branch Manager, Store Manager 
+     * Models: Administrator, Branch Manager, Store Manager
      */
     public function moveStock(User $user, Shop $fromShop, Shop $toShop, StockMovement $movement): bool
     {
-        // 1. Administrators have global access across all branches 
+        // 1. Administrators have global access across all branches
         if ($user->role === User::ROLE_ADMINISTRATOR) {
             return true;
         }
 
-        // 2. Branch Managers: Can move stock within their specific branch 
-        // Covers: Intra-branch transfers 
+        // 2. Branch Managers: Can move stock within their specific branch
+        // Covers: Intra-branch transfers
         if ($user->role === User::ROLE_BRANCH_MANAGER) {
             $isWithinBranch = $toShop && ($fromShop->branch_id === $toShop->branch_id);
+
             return $user->branch_id === $fromShop->branch_id && $isWithinBranch;
         }
 
@@ -36,13 +37,11 @@ class InventoryPolicy
     }
 
     /**
-     * Determine if user can perform stock adjustments 
+     * Determine if user can perform stock adjustments
      */
     public function adjust(User $user): bool
     {
         // Restricted to Admin to guarantee Stock Accuracy and Auditability [cite: 23, 26, 28]
         return $user->role === User::ROLE_ADMINISTRATOR;
     }
-
-   
 }

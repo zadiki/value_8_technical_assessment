@@ -11,12 +11,15 @@ class BranchService implements BranchServiceInterface
     {
         // Logic to create a new branch for a specific shop
     }
+
     public function getBranchDetails($branchId)
     {        // Logic to retrieve details of a specific branch
     }
+
     public function updateBranch($branchId, $branchData)
     {        // Logic to update details of a specific branch
     }
+
     public function deleteBranch($branchId)
     {        // Logic to delete a specific branch
     }

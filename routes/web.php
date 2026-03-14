@@ -30,20 +30,11 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
-
-
     Route::get('/products/active', [ProductController::class, 'getActiveProducts'])
         ->name('dashboard');
 
-
     Route::get('/users/active-users', [UserController::class, 'getAllActiveUsers'])
         ->name('activeUsers');
-
-
-
-
-
-
 
     // Handle Logout
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])

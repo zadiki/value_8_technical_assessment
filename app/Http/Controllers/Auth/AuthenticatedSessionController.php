@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Auth\Events\Registered;
+use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -24,7 +25,7 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming registration request.
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function register(Request $request): RedirectResponse
     {
@@ -40,9 +41,8 @@ class AuthenticatedSessionController extends Controller
             'password' => Hash::make($request->password),
 
         ]);
-        //send the user name and email to the registered event and confirm the email address
+        // send the user name and email to the registered event and confirm the email address
         event(new Registered($user));
-
 
         return redirect()->route('register')->with('success', 'Registration successful! Please ask the user to check their for account verification.');
     }

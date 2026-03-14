@@ -28,10 +28,10 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'role' => fake()->randomElement([User::ROLE_ADMINISTRATOR, User::ROLE_BRANCH_MANAGER, User::ROLE_STORE_MANAGER  ]),
+            'role' => fake()->randomElement([User::ROLE_ADMINISTRATOR, User::ROLE_BRANCH_MANAGER, User::ROLE_STORE_MANAGER]),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
-            'avatar' => 'https://ui-avatars.com/api/?name=John+Doe&background=random'
+            'avatar' => 'https://ui-avatars.com/api/?name=John+Doe&background=random',
         ];
     }
 

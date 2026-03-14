@@ -5,20 +5,20 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
-
     const ROLE_ADMINISTRATOR = 'administrator';
-    const ROLE_BRANCH_MANAGER = 'branch_manager';
-    const ROLE_STORE_MANAGER = 'store_manager';
 
+    const ROLE_BRANCH_MANAGER = 'branch_manager';
+
+    const ROLE_STORE_MANAGER = 'store_manager';
 
     /**
      * The attributes that are mass assignable.
@@ -51,7 +51,6 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
 
     public function isAdministrator()
     {

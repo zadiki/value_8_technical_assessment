@@ -1,6 +1,6 @@
 <?php
-namespace App\Providers;
 
+namespace App\Providers;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -12,8 +12,8 @@ class AuthServiceProvider extends ServiceProvider
         //
     }
 
-        protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy', 
+    protected $policies = [
+        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
         'App\Models\User' => 'App\Policies\UserPolicy',
         'App\Models\Shop' => 'App\Policies\ShopPolicy',
         'App\Models\Branch' => 'App\Policies\BranchPolicy',
@@ -22,7 +22,6 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\StockMovement' => 'App\Policies\StockMovementPolicy',
         'App\Models\Order' => 'App\Policies\OrderPolicy',
         'App\Models\DeliveryNote' => 'App\Policies\DeliveryNotePolicy',
-        
 
     ];
 

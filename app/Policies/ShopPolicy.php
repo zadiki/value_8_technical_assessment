@@ -1,7 +1,8 @@
 <?php
-namespace App\Policies;
-use App\Models\User;
 
+namespace App\Policies;
+
+use App\Models\User;
 
 class ShopPolicy
 {
@@ -29,4 +30,4 @@ class ShopPolicy
     {
         return in_array($user->role, [User::ROLE_ADMINISTRATOR]);
     }
-}   
+}

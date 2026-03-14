@@ -11,12 +11,15 @@ class OrderService implements OrderServiceInterface
     {
         // Logic to create a new order
     }
+
     public function getOrderDetails($orderId)
     {        // Logic to retrieve details of a specific order
     }
+
     public function updateOrderStatus($orderId, $status)
     {        // Logic to update the status of a specific order
     }
+
     public function cancelOrder($orderId)
     {        // Logic to cancel a specific order
     }
