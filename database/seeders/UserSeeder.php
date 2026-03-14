@@ -14,10 +14,27 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         // Create 10 random users using the UserFactory
-        User::factory(10)->create([
+        User::factory(7)->create([
             'password' => '12345678',
-            'role' => User::ROLE_STORE_MGR,
-            'avatar' => 'https://ui-avatars.com/api/?name=John+Doe&background=random'
         ]);
+        User::factory(1)->create([
+            'password' => '12345678',
+            'role' => User::ROLE_ADMINISTRATOR,
+            "email" => "zadiki@admin.com"
+
+        ]);
+        User::factory(1)->create([
+            'password' => '12345678',
+            'role' => User::ROLE_BRANCH_MANAGER,
+            "email" => "zadiki@branch.com"
+
+        ]);
+        User::factory(1)->create([
+            'password' => '12345678',
+            'role' => User::ROLE_STORE_MANAGER,
+            "email" => "zadiki@store.com"
+
+        ]);
+
     }
 }
