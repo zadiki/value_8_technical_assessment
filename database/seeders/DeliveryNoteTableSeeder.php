@@ -16,9 +16,9 @@ class DeliveryNoteTableSeeder extends Seeder
         //
         $orders = Order::all();
         foreach ($orders as $order) {
-            if ($order->shop_id) {
+            if ($order->store_id) {
                 DeliveryNote::factory(1)->create([
-                    'shop_id' => $order->shop_id,
+                    'store_id' => $order->store_id,
                 ]);
             } else {
                 DeliveryNote::factory(1)->create([

@@ -12,15 +12,15 @@ class OrderService implements OrderServiceInterface
     // Implementation for order creation
     public function createOrder($orderData)
     {
-        if (! empty($orderData['shop_id'])) {
-            $shop = Shop::firstOrFail($orderData['shop_id']);
-            $recentOrder = Order::where('shop_id', $shop->id)->latest('id');
+        if (! empty($orderData['store_id'])) {
+            $store = Store::firstOrFail($orderData['store_id']);
+            $recentOrder = Order::where('store_id', $store->id)->latest('id');
             $nextLpoNumber = 1;
             if ($recentOrder) {
                 $nextLpoNumber = end(explode('-', $recentOrder->lpo_number)) + 1;
             }
 
-            $orderData['lpo_number'] = NumberGenerator::generateLpoNumber($nextLpoNumber, $shop->shop_code);
+            $orderData['lpo_number'] = NumberGenerator::generateLpoNumber($nextLpoNumber, $store->store_code);
 
         } elseif (! empty($orderData['branch_id'])) {
             $branch = Branch::firstOrFail($orderData['branch_id']);
@@ -77,12 +77,12 @@ class OrderService implements OrderServiceInterface
     public function getAllOrders()
     {
         $orders = Order::query()
-            ->leftJoin('shops', 'orders.shop_id', '=', 'shops.id')
+            ->leftJoin('stores', 'orders.store_id', '=', 'stores.id')
             ->leftJoin('branches', 'orders.branch_id', '=', 'branches.id')
             ->leftJoin('users', 'orders.ordered_by', '=', 'users.id')
             ->select([
                 'orders.*',
-                'shops.name as shop_name',
+                'stores.name as store_name',
                 'branches.name as branch_name',
                 'users.name',
             ])

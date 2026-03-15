@@ -8,14 +8,14 @@ use App\Interfaces\InventoryServiceInterface;
 use App\Interfaces\OrderServiceInterface;
 use App\Interfaces\ProductServiceInterface;
 use App\Interfaces\SaleServiceInterface;
-use App\Interfaces\ShopServiceInterface;
+use App\Interfaces\StoreServiceInterface;
 use App\Services\BranchService;
 use App\Services\DeliveryNoteService;
 use App\Services\InventoryService;
 use App\Services\OrderService;
 use App\Services\ProductService;
 use App\Services\SaleService;
-use App\Services\ShopService;
+use App\Services\StoreService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(ShopServiceInterface::class, ShopService::class);
+        $this->app->singleton(StoreServiceInterface::class, StoreService::class);
         $this->app->singleton(InventoryServiceInterface::class, InventoryService::class);
         $this->app->singleton(OrderServiceInterface::class, OrderService::class);
         $this->app->singleton(DeliveryNoteServiceInterface::class, DeliveryNoteService::class);

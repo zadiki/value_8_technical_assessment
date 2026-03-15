@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Branch;
 use App\Models\Inventory;
 use App\Models\Product;
-use App\Models\Shop;
+use App\Models\Store;
 use Illuminate\Database\Seeder;
 
 class InventoryTableSeeder extends Seeder
@@ -17,11 +17,11 @@ class InventoryTableSeeder extends Seeder
     {
         //
         $productIds = Product::pluck('id')->toArray();
-        $shopIds = Shop::pluck('id')->toArray();
+        $storeIds = Store::pluck('id')->toArray();
         $branchIds = Branch::pluck('id')->toArray();
         Inventory::factory(100)->create([
             'product_id' => fake()->randomElement($productIds),
-            'shop_id' => fake()->randomElement($shopIds),
+            'store_id' => fake()->randomElement($storeIds),
             'branch_id' => fake()->randomElement($branchIds),
         ]);
 

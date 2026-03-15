@@ -68,8 +68,8 @@
             <!-- Search Bar (desktop only) -->
             <div class="hidden xl:block">
                 @if (auth()->check())
-                  @if(auth()->user()->isShopManager())
-                     {{ auth()->user()->shop->name }}
+                  @if(auth()->user()->isStoreManager())
+                     {{ auth()->user()->store->name }}
                   @endif
                      
                 @endif

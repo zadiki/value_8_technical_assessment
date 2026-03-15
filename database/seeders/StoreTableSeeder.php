@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Branch;
-use App\Models\Shop;
+use App\Models\Store;
 use Illuminate\Database\Seeder;
 
-class ShopTableSeeder extends Seeder
+class StoreTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class ShopTableSeeder extends Seeder
     {
         //
         $branchIds = Branch::pluck('id')->toArray();
-        Shop::factory(3)->create([
+        Store::factory(3)->create([
             'branch_id' => fake()->randomElement($branchIds),
         ]);
     }

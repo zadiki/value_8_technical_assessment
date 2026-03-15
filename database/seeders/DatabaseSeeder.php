@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             ProductTableSeeder::class,
             BranchTableSeeder::class,
-            ShopTableSeeder::class,
+            StoreTableSeeder::class,
             InventoryTableSeeder::class,
             SaleTableSeeder::class,
             SaleDetailTableSeeder::class,

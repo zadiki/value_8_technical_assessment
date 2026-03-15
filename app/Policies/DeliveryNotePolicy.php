@@ -14,14 +14,14 @@ class DeliveryNotePolicy
 
     public function view(User $user, DeliveryNote $deliveryNote): bool
     {
-        // Shop Managers can only view delivery notes from their own shop
+        // Store Managers can only view delivery notes from their own store
         if ($user->role === User::ROLE_SHOP_MANAGER) {
-            return $user->shop_id === $deliveryNote->shop_id;
+            return $user->store_id === $deliveryNote->store_id;
         }
 
-        // Branch Managers can view delivery notes from any shop within their branch
+        // Branch Managers can view delivery notes from any store within their branch
         if ($user->role === User::ROLE_BRANCH_MANAGER) {
-            return $user->branch_id === $deliveryNote->shop->branch_id;
+            return $user->branch_id === $deliveryNote->store->branch_id;
         }
 
         // Administrators have global access

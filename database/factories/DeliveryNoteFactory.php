@@ -21,7 +21,7 @@ class DeliveryNoteFactory extends Factory
             //
             'created_by' => fake()->randomElement([1, 2, 3, 4, 5]),
             'destination_type' => fake()->randomElement([1, 2]),
-            'shop_id' => null,
+            'store_id' => null,
             'branch_id' => null,
             'created_at' => now(),
             'updated_at' => now(),

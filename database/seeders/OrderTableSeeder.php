@@ -13,13 +13,13 @@ class OrderTableSeeder extends Seeder
      */
     public function run(): void
     {
-        // shop manager user
-        $shopmanagers = User::where('role', User::ROLE_SHOP_MANAGER)->get();
-        foreach ($shopmanagers as $shopmanager) {
+        // store manager user
+        $storemanagers = User::where('role', User::ROLE_SHOP_MANAGER)->get();
+        foreach ($storemanagers as $storemanager) {
 
             Order::factory(10)->create([
-                'shop_id' => $shopmanager->shop_id,
-                'ordered_by' => $shopmanager->id,
+                'store_id' => $storemanager->store_id,
+                'ordered_by' => $storemanager->id,
             ]);
         }
         $branchmanagers = User::where('role', User::ROLE_BRANCH_MANAGER)->get();

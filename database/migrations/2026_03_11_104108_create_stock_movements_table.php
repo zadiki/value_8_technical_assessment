@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('reference_type')->default(0); // 0 for order, 1 for sale, 2 for adjustment
             $table->unsignedBigInteger('reference_id')->nullable();
             $table->unsignedBigInteger('inventory_id')->nullable();
-            $table->unsignedBigInteger('shop_id')->nullable();
+            $table->unsignedBigInteger('store_id')->nullable();
             $table->unsignedBigInteger('branch_id')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('approved_by')->nullable();

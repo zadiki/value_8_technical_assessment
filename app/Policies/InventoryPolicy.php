@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\Shop;
+use App\Models\Store;
 use App\Models\StockMovement;
 use App\Models\User;
 
@@ -18,7 +18,7 @@ class InventoryPolicy
         return in_array($user->role, [User::ROLE_ADMINISTRATOR]);
     }
 
-    public function moveStock(User $user, Shop $fromShop, Shop $toShop, StockMovement $movement): bool
+    public function moveStock(User $user, Store $fromStore, Store $toStore, StockMovement $movement): bool
     {
         // 1. Administrators have global access across all branches
         if ($user->role === User::ROLE_ADMINISTRATOR) {
@@ -52,17 +52,17 @@ class InventoryPolicy
         return $user->role === User::ROLE_ADMINISTRATOR;
     }
 
-    public function viewShopInventory(User $user, Shop $shop): bool
+    public function viewStoreInventory(User $user, Store $store): bool
     {
         // 1. Administrators have global access across all branches
         if ($user->role === User::ROLE_ADMINISTRATOR) {
             return true;
         }
-        if ($user->role === User::ROLE_BRANCH_MANAGER && $user->branch_id === $shop->branch_id) {
+        if ($user->role === User::ROLE_BRANCH_MANAGER && $user->branch_id === $store->branch_id) {
             return true;
         }
 
-        if ($user->role === User::ROLE_SHOP_MANAGER && $user->shop_id === $shop->id) {
+        if ($user->role === User::ROLE_SHOP_MANAGER && $user->store_id === $store->id) {
             return true;
         }
 

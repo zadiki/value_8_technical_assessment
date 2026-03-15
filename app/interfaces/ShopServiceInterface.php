@@ -2,13 +2,13 @@
 
 namespace App\Interfaces;
 
-interface ShopServiceInterface
+interface StoreServiceInterface
 {
-    public function createShop($shopData);
+    public function createStore($storeData);
 
-    public function getShopDetails($shopId);
+    public function getStoreDetails($storeId);
 
-    public function updateShop($shopId, $shopData);
+    public function updateStore($storeId, $storeData);
 
-    public function deleteShop($shopId);
+    public function deleteStore($storeId);
 }

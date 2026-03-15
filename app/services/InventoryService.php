@@ -7,17 +7,17 @@ use App\Interfaces\InventoryServiceInterface;
 class InventoryService implements InventoryServiceInterface
 {
     // Implementation for inventory management
-    public function getAllShopInventory($shopId)
+    public function getAllStoreInventory($storeId)
     {
-        // Logic to retrieve inventory for a specific shop
-        $shopInventory = Inventory::where('shop_id', $shopId)->paginate(50);
+        // Logic to retrieve inventory for a specific store
+        $storeInventory = Inventory::where('store_id', $storeId)->paginate(50);
 
-        return $shopInventory;
+        return $storeInventory;
     }
 
-    public function updateShopInventory($shopId, $inventoryData)
+    public function updateStoreInventory($storeId, $inventoryData)
     {
-        // Logic to update inventory for a specific shop
+        // Logic to update inventory for a specific store
     }
 
     public function updateBranchInventory($branchId, $inventoryData)
@@ -33,13 +33,13 @@ class InventoryService implements InventoryServiceInterface
         return $branchInventory;
     }
 
-    public function getActiveShopInventory($shopId)
+    public function getActiveStoreInventory($storeId)
     {
-        $shopInventory = Inventory::where('shop_id', $shopId)
+        $storeInventory = Inventory::where('store_id', $storeId)
             ->where('location_type', Inventory::INVENTORY_LOCATION_TYPE_SHOP)
             ->where('is_active', true)->paginate(50);
 
-        return $shopInventory;
+        return $storeInventory;
     }
 
     public function getActiveBranchInventory($branchId)
@@ -70,7 +70,7 @@ class InventoryService implements InventoryServiceInterface
     public static function createStockMovementAfterSale(Saledetail $saleDetail, Sale $sale, Inventory $inventory)
     {
         $stockMovement = new StockMovement;
-        $stockMovement->shop_id = $sale->shop_id;
+        $stockMovement->store_id = $sale->store_id;
         $stockMovement->product_id = $saleDetail->product_id;
         $stockMovement->quantity_changed = -$saleDetail->quantity;
         $stockMovement->transaction_type = StockMovement::TRANSACTION_TYPE_OUT;

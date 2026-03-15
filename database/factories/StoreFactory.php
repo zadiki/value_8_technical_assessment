@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Shop;
+use App\Models\Store;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Shop>
+ * @extends Factory<Store>
  */
-class ShopFactory extends Factory
+class StoreFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,7 +20,7 @@ class ShopFactory extends Factory
         return [
             //
             'name' => fake()->company(),
-            'shop_code' => fake()->unique()->numerify('SHOP-#####'),
+            'store_code' => fake()->unique()->numerify('SHOP-#####'),
         ];
     }
 }

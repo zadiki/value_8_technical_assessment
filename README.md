@@ -1,59 +1,96 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚛 KK Wholesalers: Enterprise Inventory & POS
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Laravel 12](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql)](https://mysql.com)
+[![CI/CD Status](https://github.com/kk-wholesalers/app/actions/workflows/deploy.yml/badge.svg)](https://github.com/kk-wholesalers/app/actions)
 
-## About Laravel
+**KK Wholesalers** is a robust, multi-tenant inventory management solution designed to synchronize central hub operations with distributed branch networks. It manages the full lifecycle of goods from central procurement to localized store sales.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🏛 System Hierarchy
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Our architecture follows a strictly hierarchical model to ensure data integrity across the supply chain:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* **Central Warehouse:** The primary entry point for all bulk procurement.
+* **Branches:** Regional headquarters (e.g., Nairobi, Mombasa, Kisumu).
+* **Stores:** Each Branch contains **multiple sub-stores** (e.g., Front-end Store, Bulk Store, Cold Storage).
+* **Users:** Linked directly to a specific Store via a Many-to-One relationship.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 🚀 Key Modules
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 📦 Central Dispatch & Ordering
+* **LPO Management:** Integrated Local Purchase Orders for external suppliers.
+* **Push Distribution:** Bulk dispatch from Central Warehouse to Branch Stores based on demand forecasting.
+* **Stock Tracking:** Real-time visibility of total company assets vs. branch-specific holdings.
 
-## Laravel Sponsors
+### 🔄 Inter-Store Transfers
+* **Branch-to-Branch:** Formalized stock movement between regional hubs.
+* **Intra-Branch:** Moving stock between a branch’s "Bulk Store" and its "POS Store."
+* **Digital Waybills:** Automated generation of transfer documents and delivery notes.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 💳 Point of Sale (POS)
+* **Multi-Store Inventory:** Cashiers pull stock only from their assigned store in real-time.
+* **Session Security:** End-of-day reconciliation reports for every cashier and store manager.
+* **Mixed Payments:** Seamless handling of Cash, Mobile Money (M-Pesa), and Credit.
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 🛠 Tech Stack
 
-## Contributing
+* **Framework:** Laravel 12.x
+* **Language:** PHP 8.4+
+* **Database:** MySQL 8.0 (Production) / SQLite (Testing)
+* **DevOps:** GitHub Actions (Pint, PHPUnit, SSH Deploy)
+* **Styling:** Tailwind CSS & Livewire
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## ⚙️ Setup & Installation
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1.  **Clone & Install:**
+    ```bash
+    git clone [https://github.com/kk-wholesalers/inventory.git](https://github.com/kk-wholesalers/inventory.git)
+    composer install
+    npm install && npm run build
+    ```
 
-## Security Vulnerabilities
+2.  **Environment Configuration:**
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+3.  **Database Sync:**
+    ```bash
+    # Ensure MySQL is running
+    php artisan migrate --seed
+    ```
 
-## License
+4.  **Local Testing (SQLite):**
+    ```bash
+    php artisan test
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## 📊 Database Relationship Summary
+
+| Table | Relationship | Purpose |
+| :--- | :--- | :--- |
+| **Branches** | `hasMany(Store)` | Defines regional headquarters. |
+| **Stores** | `belongsTo(Branch)` | Physical locations holding stock. |
+| **Users** | `belongsTo(Store)` | Restricts access to specific inventory. |
+| **Products** | `belongsToMany(Store)` | Tracks quantity via `store_product` pivot. |
+
+---
+
+## 🛡 Security & Compliance
+
+* **Role-Based Access (RBAC):** Users are strictly scoped to their assigned Store.
+* **Audit Logs:** Every stock movement is tracked with User ID and Timestamp.
+* **Automated CI:** Deployments only trigger if all **Unit and Feature tests** pass.
+
+---
+
+© 2026 KK Wholesalers Ltd. Internal System.

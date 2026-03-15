@@ -4,15 +4,15 @@ namespace App\Interfaces;
 
 interface InventoryServiceInterface
 {
-    public function getAllShopInventory($shopId);
+    public function getAllStoreInventory($storeId);
 
-    public function updateShopInventory($shopId, $inventoryData);
+    public function updateStoreInventory($storeId, $inventoryData);
 
     public function updateBranchInventory($branchId, $inventoryData);
 
     public function getBranchInventory($branchId);
 
-    public function getActiveShopInventory($shopId);
+    public function getActiveStoreInventory($storeId);
 
     public function getActiveBranchInventory($branchId);
 

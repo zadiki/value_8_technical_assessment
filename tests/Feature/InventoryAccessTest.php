@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Models\Shop;
+use App\Models\Store;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -16,8 +16,8 @@ class InventoryAccessTest extends TestCase
      */
     public function test_example(): void
     {
-        $user = User::factory(['shop_id' => 1])->create();
-        Shop::factory()->create();
+        $user = User::factory(['store_id' => 1])->create();
+        Store::factory()->create();
 
         // Act as that user
         $response = $this->actingAs($user)->get('/');

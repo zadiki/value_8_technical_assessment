@@ -31,7 +31,7 @@ class UserTableSeeder extends Seeder
         User::factory(1)->create([
             'password' => '12345678',
             'role' => User::ROLE_SHOP_MANAGER,
-            'email' => 'zadiki@shop.com',
+            'email' => 'zadiki@store.com',
 
         ]);
 

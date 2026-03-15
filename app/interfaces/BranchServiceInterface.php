@@ -4,7 +4,7 @@ namespace App\Interfaces;
 
 interface BranchServiceInterface
 {
-    public function createBranch($shopId, $branchData);
+    public function createBranch($storeId, $branchData);
 
     public function getBranchDetails($branchId);
 

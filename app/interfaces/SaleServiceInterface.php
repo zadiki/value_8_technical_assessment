@@ -10,9 +10,9 @@ interface SaleServiceInterface
 
     public function getSaleDetails($saleId);
 
-    public function getSalesPerShop($shopId);
+    public function getSalesPerStore($storeId);
 
-    public function getShopSalesReport($shopId, $startDate, $endDate);
+    public function getStoreSalesReport($storeId, $startDate, $endDate);
 
     public function getBranchSalesReport($branchId, $startDate, $endDate);
 

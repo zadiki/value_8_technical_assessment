@@ -58,9 +58,9 @@ Route::middleware('auth')->prefix('delivery-notes')->group(function () {
 });
 
 Route::middleware('auth')->prefix('inventory')->group(function () {
-    Route::get('/shop-inventory', function () {
-        return view('view-shop-inventory');
-    })->name('shopInventory');
+    Route::get('/store-inventory', function () {
+        return view('view-store-inventory');
+    })->name('storeInventory');
     Route::get('/branch-inventory', function () {
         return view('view-branch-inventory');
     })->name('branchInventory');
@@ -76,9 +76,9 @@ Route::middleware('auth')->prefix('inventory')->group(function () {
 });
 
 Route::middleware('auth')->prefix('sales')->group(function () {
-    Route::get('/shop-sales', function () {
-        return view('view-shop-sales');
-    })->name('shopSales');
+    Route::get('/store-sales', function () {
+        return view('view-store-sales');
+    })->name('storeSales');
     Route::get('/branch-sales', function () {
         return view('view-branch-sales');
     })->name('branchSales');

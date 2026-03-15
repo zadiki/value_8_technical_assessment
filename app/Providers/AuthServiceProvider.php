@@ -15,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
         'App\Models\User' => 'App\Policies\UserPolicy',
-        'App\Models\Shop' => 'App\Policies\ShopPolicy',
+        'App\Models\Store' => 'App\Policies\StorePolicy',
         'App\Models\Branch' => 'App\Policies\BranchPolicy',
         'App\Models\Inventory' => 'App\Policies\InventoryPolicy',
         'App\Models\Sale' => 'App\Policies\SalePolicy',
@@ -44,12 +44,12 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage-branch', function (User $user, $branch) {
             return $user->role === User::ROLE_BRANCH_MANAGER && $user->branch_id === $branch->id;
         });
-        Gate::define('manage-shop', function (User $user, $shop) {
-            return $user->role === User::ROLE_SHOP_MANAGER && $user->shop_id === $shop->id;
+        Gate::define('manage-store', function (User $user, $store) {
+            return $user->role === User::ROLE_SHOP_MANAGER && $user->store_id === $store->id;
         });
-        Gate::define('make-sale', function (User $user, $shop) {
+        Gate::define('make-sale', function (User $user, $store) {
             if ($user->role === User::ROLE_SHOP_MANAGER) {
-                return $user->shop_id === $shop->id;
+                return $user->store_id === $store->id;
             }
 
             return false;
@@ -59,7 +59,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('edit-user-details', function (User $user, User $targetUser) {
-            // Admins can edit any user, Branch Managers can edit users in their branch, Shop Managers can edit users in their shop
+            // Admins can edit any user, Branch Managers can edit users in their branch, Store Managers can edit users in their store
             if ($user->role === User::ROLE_ADMINISTRATOR) {
                 return true;
             }

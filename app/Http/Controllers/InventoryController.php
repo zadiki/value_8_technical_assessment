@@ -14,13 +14,13 @@ class InventoryController extends Controller
         $this->inventoryService = $inventoryService;
     }
 
-    public function getAllShopInventory(Request $request)
+    public function getAllStoreInventory(Request $request)
     {
-        $validated = $request->validate(['shop_id' => 'required|integer']);
-        $this->authorize('viewShopInventory', [Shop::class, $request->shop_id]);
-        $shopId = $request->input('shop_id');
+        $validated = $request->validate(['store_id' => 'required|integer']);
+        $this->authorize('viewStoreInventory', [Store::class, $request->store_id]);
+        $storeId = $request->input('store_id');
 
-        return $this->inventoryService->getAllShopInventory($shopId);
+        return $this->inventoryService->getAllStoreInventory($storeId);
     }
 
     public function getBranchInventory(Request $request)
@@ -32,13 +32,13 @@ class InventoryController extends Controller
         return $this->inventoryService->getBranchInventory($branchId);
     }
 
-    public function getActiveShopInventory(Request $request)
+    public function getActiveStoreInventory(Request $request)
     {
-        $validated = $request->validate(['shop_id' => 'required|integer']);
-        $this->authorize('viewShopInventory', [Shop::class, $request->shop_id]);
-        $shopId = $request->input('shop_id');
+        $validated = $request->validate(['store_id' => 'required|integer']);
+        $this->authorize('viewStoreInventory', [Store::class, $request->store_id]);
+        $storeId = $request->input('store_id');
 
-        return $this->inventoryService->getActiveShopInventory($shopId);
+        return $this->inventoryService->getActiveStoreInventory($storeId);
     }
 
     public function getActiveBranchInventory(Request $request)

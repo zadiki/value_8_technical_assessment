@@ -18,7 +18,7 @@ class OrderController extends Controller
     public function createOrder(Request $request)
     {
         $orderData = $request->validate([
-            'shop_id' => 'integer',
+            'store_id' => 'integer',
             'branch_id' => 'integer',
         ]);
 

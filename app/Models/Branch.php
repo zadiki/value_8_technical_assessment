@@ -22,11 +22,11 @@ class Branch extends Model
     ];
 
     /**
-     * Get the shops for the branch.
+     * Get the stores for the branch.
      */
-    public function shops(): HasMany
+    public function stores(): HasMany
     {
-        return $this->hasMany(Shop::class);
+        return $this->hasMany(Store::class);
     }
 
     /**

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Shop extends Model
+class Store extends Model
 {
     use HasFactory;
 
@@ -22,7 +22,7 @@ class Shop extends Model
     ];
 
     /**
-     * Get the branch that owns the shop.
+     * Get the branch that owns the store.
      */
     public function branch(): BelongsTo
     {
@@ -30,7 +30,7 @@ class Shop extends Model
     }
 
     /**
-     * Get the user that manages the shop.
+     * Get the user that manages the store.
      */
     public function user(): BelongsTo
     {

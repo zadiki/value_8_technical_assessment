@@ -61,7 +61,7 @@
                     </span>
                 </td>
                 <td class="px-6 py-4">
-                    <div class="text-gray-900">${order.shop_name}</div>
+                    <div class="text-gray-900">${order.store_name}</div>
                     <div class="text-xs text-gray-400">${order.branch_name ?? 'Main Warehouse'}</div>
                 </td>
                 <td class="px-6 py-4">${order.user_name}</td>

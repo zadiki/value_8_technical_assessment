@@ -2,39 +2,39 @@
 
 namespace App\Services;
 
-use App\Interfaces\ShopServiceInterface;
+use App\Interfaces\StoreServiceInterface;
 
-class ShopService implements ShopServiceInterface
+class StoreService implements StoreServiceInterface
 {
-    // Implementation for shop management
-    public function createShop($shopData)
+    // Implementation for store management
+    public function createStore($storeData)
     {
-        // Logic to create a new shop
-        $shop = Shop::create($shopData);
+        // Logic to create a new store
+        $store = Store::create($storeData);
 
-        return $shop;
+        return $store;
     }
 
-    public function getShopDetails($shopId)
-    {        // Logic to retrieve details of a specific shop
-        $shop = Shop::find($shopId);
+    public function getStoreDetails($storeId)
+    {        // Logic to retrieve details of a specific store
+        $store = Store::find($storeId);
 
-        return $shop;
+        return $store;
     }
 
-    public function updateShop($shopId, $shopData)
-    {        // Logic to update details of a specific shop
-        $shop = Shop::find($shopId);
-        $shop->update($shopData);
+    public function updateStore($storeId, $storeData)
+    {        // Logic to update details of a specific store
+        $store = Store::find($storeId);
+        $store->update($storeData);
 
-        return $shop;
+        return $store;
     }
 
-    public function deleteShop($shopId)
-    {        // Logic to delete a specific shop
-        $shop = Shop::find($shopId);
-        $shop->delete();
+    public function deleteStore($storeId)
+    {        // Logic to delete a specific store
+        $store = Store::find($storeId);
+        $store->delete();
 
-        return $shop;
+        return $store;
     }
 }

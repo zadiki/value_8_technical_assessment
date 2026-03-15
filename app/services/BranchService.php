@@ -7,9 +7,9 @@ use App\Interfaces\BranchServiceInterface;
 class BranchService implements BranchServiceInterface
 {
     // Implementation for branch management
-    public function createBranch($shopId, $branchData)
+    public function createBranch($storeId, $branchData)
     {
-        // Logic to create a new branch for a specific shop
+        // Logic to create a new branch for a specific store
     }
 
     public function getBranchDetails($branchId)

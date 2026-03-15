@@ -17,8 +17,8 @@ return new class extends Migration
             $table->integer('quantity')->default(0);
             $table->decimal('cost_price', 10, 2)->default(0);
             $table->decimal('selling_price', 10, 2)->default(0);
-            $table->integer('location_type')->default(0); // 0 for branch, 1 for shop floor
-            $table->unsignedBigInteger('shop_id')->nullable();
+            $table->integer('location_type')->default(0); // 0 for branch, 1 for store floor
+            $table->unsignedBigInteger('store_id')->nullable();
             $table->unsignedBigInteger('branch_id')->nullable();
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('updated_by')->nullable();

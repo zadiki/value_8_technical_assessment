@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('role');
             $table->string('avatar')->nullable();
-            $table->unsignedBigInteger('shop_id')->nullable();
+            $table->unsignedBigInteger('store_id')->nullable();
             $table->unsignedBigInteger('branch_id')->nullable();
             $table->rememberToken()->nullable();
             $table->timestamps();

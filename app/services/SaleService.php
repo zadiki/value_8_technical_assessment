@@ -25,7 +25,7 @@ class SaleService implements SaleServiceInterface
 
                 // Update inventory logic here
                 $inventory = Inventory::where('product_id', $item['product_id'])
-                    ->where('shop_id', $saleData['shop_id'])
+                    ->where('store_id', $saleData['store_id'])
                     ->where('active_status', true)
                     ->where('location_type', Inventory::INVENTORY_LOCATION_TYPE_SHOP)->first();
                 if (! $inventory || $inventory->quantity < $item['quantity']) {
@@ -82,15 +82,15 @@ class SaleService implements SaleServiceInterface
         return $report;
     }
 
-    public function getShopSalesReport($shopId, $startDate, $endDate)
+    public function getStoreSalesReport($storeId, $startDate, $endDate)
     {
-        // Logic to generate a sales report for a specific shop and date range
+        // Logic to generate a sales report for a specific store and date range
         $reports = DB::table('sales')
-            ->select('shop_id', DB::raw('SUM(total_amount) as total_sales'))
-            ->where('shop_id', $shopId)
+            ->select('store_id', DB::raw('SUM(total_amount) as total_sales'))
+            ->where('store_id', $storeId)
             ->whereBetween('created_at', [$startDate, $endDate])
             ->where('is_active', true)
-            ->groupBy('shop_id')
+            ->groupBy('store_id')
             ->get();
 
         return $reports;
@@ -131,10 +131,10 @@ class SaleService implements SaleServiceInterface
         return $saledetails;
     }
 
-    public function getSalesPerShop($shopId)
+    public function getSalesPerStore($storeId)
     {
-        // Logic to retrieve sales data for a specific shop
-        $sales = Sale::where('shop_id', $shopId)->get(); // Placeholder for sales retrieval logic
+        // Logic to retrieve sales data for a specific store
+        $sales = Sale::where('store_id', $storeId)->get(); // Placeholder for sales retrieval logic
 
         return $sales;
     }

@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Sale;
-use App\Models\Shop;
+use App\Models\Store;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -16,10 +16,10 @@ class SaleTableSeeder extends Seeder
     {
         //
 
-        $shopIds = Shop::pluck('id')->toArray();
+        $storeIds = Store::pluck('id')->toArray();
         $userIds = User::pluck('id')->toArray();
         Sale::factory(100)->create([
-            'shop_id' => fake()->randomElement($shopIds),
+            'store_id' => fake()->randomElement($storeIds),
             'sold_by' => fake()->randomElement($userIds),
         ]);
     }

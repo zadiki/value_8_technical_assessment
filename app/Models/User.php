@@ -19,7 +19,7 @@ class User extends Authenticatable
 
     const ROLE_BRANCH_MANAGER = 'branch_manager';
 
-    const ROLE_SHOP_MANAGER = 'shop_manager';
+    const ROLE_SHOP_MANAGER = 'store_manager';
 
     /**
      * The attributes that are mass assignable.
@@ -63,17 +63,17 @@ class User extends Authenticatable
         return $this->role === self::ROLE_BRANCH_MANAGER;
     }
 
-    public function isShopManager()
+    public function isStoreManager()
     {
         return $this->role === self::ROLE_SHOP_MANAGER;
     }
 
     /**
-     * Get the shop associated with the user.
+     * Get the store associated with the user.
      */
-    public function shop(): BelongsTo
+    public function store(): BelongsTo
     {
-        return $this->belongsTo(Shop::class);
+        return $this->belongsTo(Store::class);
     }
 
     /**

@@ -22,7 +22,7 @@ class InventoryFactory extends Factory
             'product_id' => fake()->unique(),
             'cost_price' => fake()->randomFloat(2, 1, 100),
             'selling_price' => fake()->randomFloat(2, 1, 150),
-            'shop_id' => null,
+            'store_id' => null,
             'branch_id' => null,
             'quantity' => fake()->numberBetween(1, 100),
             'created_at' => now(),

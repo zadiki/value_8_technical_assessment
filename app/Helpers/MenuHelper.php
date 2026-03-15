@@ -53,7 +53,7 @@ class MenuHelper
                 'icon' => 'forms',
                 'name' => 'Inventory',
                 'subItems' => [
-                    ['name' => 'Shop Inventory', 'path' => '/inventory/shop-inventory', 'pro' => false],
+                    ['name' => 'Store Inventory', 'path' => '/inventory/store-inventory', 'pro' => false],
                     ['name' => 'Branch Inventory', 'path' => '/inventory/branch-inventory', 'pro' => false],
                     ['name' => 'Master Inventory', 'path' => '/inventory/master-inventory', 'pro' => false],
                     ['name' => 'Inventory Report', 'path' => '/inventory/inventory-report', 'pro' => false],
@@ -67,7 +67,7 @@ class MenuHelper
                 'name' => 'Sales',
                 'icon' => 'tables',
                 'subItems' => [
-                    ['name' => 'Shop Sales', 'path' => '/sales/shop-sales', 'pro' => false],
+                    ['name' => 'Store Sales', 'path' => '/sales/store-sales', 'pro' => false],
                     ['name' => 'Branch Sales', 'path' => '/sales/branch-sales', 'pro' => false],
                     ['name' => 'Master Sales', 'path' => '/sales/master-sales', 'pro' => false],
                     ['name' => 'Sales Report', 'path' => '/sales/sales-report', 'pro' => false],
@@ -81,7 +81,7 @@ class MenuHelper
                 'name' => 'Management',
                 'icon' => 'pages',
                 'subItems' => [
-                    ['name' => 'Shops', 'path' => '/shops', 'pro' => false],
+                    ['name' => 'Stores', 'path' => '/stores', 'pro' => false],
                     ['name' => 'Branches', 'path' => '/branches', 'pro' => false],
                     ['name' => 'System Users', 'path' => '/view_users', 'pro' => false],
                     ['name' => 'Create User', 'path' => '/create-user', 'pro' => false],
