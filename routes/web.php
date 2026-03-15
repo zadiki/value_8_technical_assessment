@@ -90,6 +90,43 @@ Route::middleware('auth')->prefix('sales')->group(function () {
     })->name('salesReport');
 });
 
+Route::middleware('auth')->prefix('stores')->group(function () {
+    Route::get('/', function () {
+        return view('view-stores');
+    })->name('stores');
+    Route::get('/create-store', function () {
+        // return view('view-create-store');
+    })->name('createStore');
+});
+
+Route::middleware('auth')->prefix('branches')->group(function () {
+    Route::get('/', function () {
+        return view('view-branches');
+    })->name('branches');
+    Route::get('/create-branch', function () {
+        // return view('view-create-branch');
+    })->name('createBranch');
+});
+
+
+Route::middleware('auth')->prefix('users')->group(function () {
+    Route::get('/', function () {
+        return view('view-users');
+    })->name('viewUsers');  
+    Route::get('/create-user', function () {
+        // return view('view-create-user');
+    })->name('createUser');
+});
+
+Route::middleware('auth')->prefix('products')->group(function () {
+    Route::get('/active', function () {
+        return view('view-active-products');
+    })->name('activeProducts'); 
+
+});
+
+
+
 // json return routes
 Route::middleware('auth')->prefix('api')->group(function () {
 

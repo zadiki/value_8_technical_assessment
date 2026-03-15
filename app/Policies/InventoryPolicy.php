@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Store;
 use App\Models\StockMovement;
+use App\Models\Store;
 use App\Models\User;
 
 class InventoryPolicy

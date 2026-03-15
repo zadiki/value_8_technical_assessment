@@ -1,0 +1,24 @@
+0000000000000000000000000000000000000000 22b2a454ddc811cf2b51887021aaa4311af67ee4 zadiki <zadikiochola@gmail.com> 1773223531 +0300	commit (initial): initialisezed laravel project
+22b2a454ddc811cf2b51887021aaa4311af67ee4 22b2a454ddc811cf2b51887021aaa4311af67ee4 zadiki <zadikiochola@gmail.com> 1773224028 +0300	Branch: renamed refs/heads/master to refs/heads/main
+22b2a454ddc811cf2b51887021aaa4311af67ee4 e190bb7a3bd1370a403749ab711fa57e0216d146 zadiki <zadikiochola@gmail.com> 1773233305 +0300	commit: created empty models
+e190bb7a3bd1370a403749ab711fa57e0216d146 6526e67650cff3e1689bff707f02ea1d682ea2b4 zadiki <zadikiochola@gmail.com> 1773287005 +0300	commit: login page done
+6526e67650cff3e1689bff707f02ea1d682ea2b4 73f51c5445e330e22df5015b85b792f2249c3d8c zadiki <zadikiochola@gmail.com> 1773454382 +0300	pull: Fast-forward
+73f51c5445e330e22df5015b85b792f2249c3d8c 178e9013d1cc997bc2bd20a32eed7f9e20be6ee4 zadiki <zadikiochola@gmail.com> 1773461640 +0300	commit: fixed errors in binding
+178e9013d1cc997bc2bd20a32eed7f9e20be6ee4 fae920e1b69958d6e2bca5285e627cec9a868f47 zadiki <zadikiochola@gmail.com> 1773461684 +0300	commit: fixed errors in binding
+fae920e1b69958d6e2bca5285e627cec9a868f47 db8547abeb0e48c030f3000b1dd17f347ab8d26d zadiki <zadikiochola@gmail.com> 1773464647 +0300	commit: m
+db8547abeb0e48c030f3000b1dd17f347ab8d26d fd0750cb4a9148ff082479eca87dc42fcb434b09 zadiki <zadikiochola@gmail.com> 1773477770 +0300	commit: added workflow for ci cd
+fd0750cb4a9148ff082479eca87dc42fcb434b09 c80e0dfe396c1098db477bc606adccbd6139cd80 zadiki <zadikiochola@gmail.com> 1773477893 +0300	commit: testing workflow
+c80e0dfe396c1098db477bc606adccbd6139cd80 b93b552405bf1bd936b655e5b8099ab144e1f40f zadiki <zadikiochola@gmail.com> 1773478037 +0300	commit: testing workflow
+b93b552405bf1bd936b655e5b8099ab144e1f40f f0883398a7b5b05f26bd32138212e6637c0feb48 zadiki <zadikiochola@gmail.com> 1773478242 +0300	commit: fixed errors on database seeder
+f0883398a7b5b05f26bd32138212e6637c0feb48 3abc392840eb31935968488c2ea1105321c8d3bf zadiki <zadikiochola@gmail.com> 1773479434 +0300	commit: user controller cruds done
+3abc392840eb31935968488c2ea1105321c8d3bf 2364127859faaf83d12848dee1ca60a7ef99c0dc zadiki <zadikiochola@gmail.com> 1773486390 +0300	commit: inventory controller views done
+2364127859faaf83d12848dee1ca60a7ef99c0dc fd50867f93487949dbff5dfc849ebf432edeea79 zadiki <zadikiochola@gmail.com> 1773486423 +0300	commit: added global error handler
+fd50867f93487949dbff5dfc849ebf432edeea79 74e76d55c5ecec260a260da3abe1d4ea28a9316a zadiki <zadikiochola@gmail.com> 1773495180 +0300	commit: make sale done
+74e76d55c5ecec260a260da3abe1d4ea28a9316a 80bbf83f07bb037f85ad55d6ed9429d63aa01379 zadiki <zadikiochola@gmail.com> 1773499755 +0300	commit: make sale done
+80bbf83f07bb037f85ad55d6ed9429d63aa01379 cdb33f36bbb97951ccf83ff8e1b79113d30c6f8f zadiki <zadikiochola@gmail.com> 1773588041 +0300	commit: added side nav views and routes
+cdb33f36bbb97951ccf83ff8e1b79113d30c6f8f 4952f27c72c668743cfe571360f873b6329195e6 zadiki <zadikiochola@gmail.com> 1773593894 +0300	commit: basic unit testing done
+4952f27c72c668743cfe571360f873b6329195e6 512b6c05d902624c41c62d92cc60ddeb711c8627 zadiki <zadikiochola@gmail.com> 1773594519 +0300	commit: basic unit testing done
+512b6c05d902624c41c62d92cc60ddeb711c8627 4d213ad3333d480dbf1611f01383d396fe9ef58e zadiki <zadikiochola@gmail.com> 1773594574 +0300	commit: basic unit testing done
+4d213ad3333d480dbf1611f01383d396fe9ef58e eb976f9cde6a1c155450fde14ffc17c821b7ff70 zadiki <zadikiochola@gmail.com> 1773594675 +0300	commit: basic unit testing done
+eb976f9cde6a1c155450fde14ffc17c821b7ff70 8e5422336b47ea634437827104708fea6696f79b zadiki <zadikiochola@gmail.com> 1773596699 +0300	commit: renamed shops to store
+8e5422336b47ea634437827104708fea6696f79b af7feeb20f7e403c51288f5dc0bd539cc98f966f zadiki <zadikiochola@gmail.com> 1773596993 +0300	commit: polished read me file

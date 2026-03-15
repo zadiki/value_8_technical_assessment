@@ -10,13 +10,12 @@
     <script>
       $(document).ready(function(){
         $.get('/api/order/all-orders', function(data) {
-          console.log(data);
-        renderOrderTable(data);
-    
-        $('#order-name').text(data.name);
-     }).fail(function() {
-         alert('Could not fetch data.');
-   });
+                 console.log(data);
+                 renderOrderTable(data);
+                  $('#order-name').text(data.name);
+         }).fail(function() {
+                 alert('Could not fetch data.');
+        });
       });  
 
 
@@ -75,7 +74,5 @@
         $('#order-rows').append(row);
     });
 }
-
-
     </script>
 @endpush
