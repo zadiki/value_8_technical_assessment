@@ -2,7 +2,7 @@
 
 [![Laravel 12](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com)
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql)](https://mysql.com)
-[![CI/CD Status](https://github.com/kk-wholesalers/app/actions/workflows/deploy.yml/badge.svg)](https://github.com/kk-wholesalers/app/actions)
+[![CI/CD Status](https://github.com/zadiki/value_8_technical_assessment/app/actions/workflows/deploy.yml/badge.svg)](https://github.com/zadiki/value_8_technical_assessment/app/actions)
 
 **KK Wholesalers** is a robust, multi-tenant inventory management solution designed to synchronize central hub operations with distributed branch networks. It manages the full lifecycle of goods from central procurement to localized store sales.
 
@@ -50,7 +50,7 @@ Our architecture follows a strictly hierarchical model to ensure data integrity 
 
 1.  **Clone & Install:**
     ```bash
-    git clone [https://github.com/kk-wholesalers/inventory.git](https://github.com/kk-wholesalers/inventory.git)
+    git clone [https://github.com/zadiki/value_8_technical_assessment.git](https://github.com/zadiki/value_8_technical_assessment.git)
     composer install
     npm install && npm run build
     ```
