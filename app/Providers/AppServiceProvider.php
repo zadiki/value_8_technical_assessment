@@ -2,6 +2,20 @@
 
 namespace App\Providers;
 
+use App\Interfaces\BranchServiceInterface;
+use App\Interfaces\DeliveryNoteServiceInterface;
+use App\Interfaces\InventoryServiceInterface;
+use App\Interfaces\OrderServiceInterface;
+use App\Interfaces\ProductServiceInterface;
+use App\Interfaces\SaleServiceInterface;
+use App\Interfaces\ShopServiceInterface;
+use App\Services\BranchService;
+use App\Services\DeliveryNoteService;
+use App\Services\InventoryService;
+use App\Services\OrderService;
+use App\Services\ProductService;
+use App\Services\SaleService;
+use App\Services\ShopService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
@@ -13,14 +27,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
-        $this->app->bind('App\Interfaces\ShopServiceInterface', 'App\Services\ShopService');
-        $this->app->bind('App\Interfaces\InventoryServiceInterface', 'App\Services\InventoryService');
-        $this->app->bind('App\Interfaces\OrderServiceInterface', 'App\Services\OrderService');
-        $this->app->bind('App\Interfaces\DeliveryNoteServiceInterface', 'App\Services\DeliveryNoteService');
-        $this->app->bind('App\Interfaces\SaleServiceInterface', 'App\Services\SaleService');
-        $this->app->bind('App\Interfaces\BranchServiceInterface', 'App\Services\BranchService');
-        $this->app->bind('App\Interfaces\ProductServiceInterface', 'App\Services\ProductService');
+        $this->app->singleton(ShopServiceInterface::class, ShopService::class);
+        $this->app->singleton(InventoryServiceInterface::class, InventoryService::class);
+        $this->app->singleton(OrderServiceInterface::class, OrderService::class);
+        $this->app->singleton(DeliveryNoteServiceInterface::class, DeliveryNoteService::class);
+        $this->app->singleton(SaleServiceInterface::class, SaleService::class);
+        $this->app->singleton(BranchServiceInterface::class, BranchService::class);
+        $this->app->singleton(ProductServiceInterface::class, ProductService::class);
     }
 
     /**
@@ -28,14 +41,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-
-        DB::listen(function ($query) {
-            Log::info(
-                $query->sql,
-                $query->bindings,
-                $query->time
-            );
-        });
-
+        // Only log queries in the local environment
+        if (config('app.env') === 'local') {
+            DB::listen(function ($query) {
+                Log::info('SQL Query executed:', [
+                    'sql' => $query->sql,
+                    'bindings' => $query->bindings,
+                    'time' => $query->time.'ms',
+                ]);
+            });
+        }
     }
 }

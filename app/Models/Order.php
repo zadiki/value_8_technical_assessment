@@ -9,6 +9,12 @@ class Order extends Model
 {
     use HasFactory;
 
+    const ORDER_TYPE_SHOP_ORDER = 0;
+
+    const ORDER_TYPE_BRANCH_ORDER = 1;
+
+    const ORDER_TYPE_CENTRAL_WAREHOUSE_ORDER = 2;
+
     //
     const STATUS_CREATED = 0;
 

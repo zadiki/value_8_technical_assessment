@@ -7,6 +7,11 @@ use App\Models\User;
 
 class DeliveryNotePolicy
 {
+    public function viewAny($user)
+    {
+        return in_array($user->role, [User::ROLE_ADMINISTRATOR, User::ROLE_SHOP_MANAGER, User::ROLE_BRANCH_MANAGER]);
+    }
+
     public function view(User $user, DeliveryNote $deliveryNote): bool
     {
         // Shop Managers can only view delivery notes from their own shop

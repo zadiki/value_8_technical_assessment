@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Interfaces\OrderServiceInterface;
+use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -13,4 +14,20 @@ class OrderController extends Controller
         $this->orderService = $orderService;
     }
     //
+
+    public function createOrder(Request $request)
+    {
+        $orderData = $request->validate([
+            'shop_id' => 'integer',
+            'branch_id' => 'integer',
+        ]);
+
+        return $this->orderService->createOrder($orderData);
+    }
+
+    public function getallOrders(Request $request)
+    {
+
+        return $this->orderService->getAllOrders();
+    }
 }

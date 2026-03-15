@@ -2,27 +2,41 @@
 
 namespace App\Helpers;
 
+use App\Models\Inventory;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 class MenuHelper
 {
     public static function getMainNavItems()
     {
-        return [
+        $user = Auth::user();
+
+        $mainNaveItemsArray = [
             [
                 'icon' => 'dashboard',
                 'name' => 'Dashboard',
                 'path' => '/',
             ],
-            [
+        ];
+
+        if ($user->can('viewAny', Order::class)) {
+            $mainNaveItemsArray[] = [
                 'icon' => 'dashboard',
                 'name' => 'Orders',
                 'subItems' => [
-                    ['name' => 'Order List', 'path' => '/orders', 'pro' => false],
-                    ['name' => 'Requeste Order', 'path' => '/add-order', 'pro' => false],
-                    ['name' => 'Incoming Order', 'path' => '/edit-order', 'pro' => false],
+                    ['name' => 'Order List', 'path' => '/order/view-orders', 'pro' => false],
+                    ['name' => 'Requeste Order', 'path' => '/order/create-order', 'pro' => false],
+                    ['name' => 'Incoming Order', 'path' => '/delivery-notes', 'pro' => false],
                 ],
 
-            ],
-            [
+            ];
+        }
+
+        if ($user->can('viewAny', Product::class)) {
+            $mainNaveItemsArray[] = [
                 'icon' => 'calendar',
                 'name' => 'Products',
                 'subItems' => [
@@ -31,37 +45,51 @@ class MenuHelper
                     ['name' => 'Edit Product', 'path' => '/edit-product', 'pro' => false],
                 ],
 
-            ],
-
+            ];
+        }
+        if ($user->can('viewAny', Inventory::class)) {
+            $mainNaveItemsArray[] =
             [
                 'icon' => 'forms',
                 'name' => 'Inventory',
                 'subItems' => [
-                    ['name' => 'Shop Inventory', 'path' => '/shop-inventory', 'pro' => false],
-                    ['name' => 'Branch Inventory', 'path' => '/branch-inventory', 'pro' => false],
-                    ['name' => 'Master Inventory', 'path' => '/master-inventory', 'pro' => false],
+                    ['name' => 'Shop Inventory', 'path' => '/inventory/shop-inventory', 'pro' => false],
+                    ['name' => 'Branch Inventory', 'path' => '/inventory/branch-inventory', 'pro' => false],
+                    ['name' => 'Master Inventory', 'path' => '/inventory/master-inventory', 'pro' => false],
+                    ['name' => 'Inventory Report', 'path' => '/inventory/inventory-report', 'pro' => false],
+                    ['name' => 'Pending Adjustments', 'path' => '/inventory/pending-adjustments', 'pro' => false],
+
                 ],
-            ],
-            [
+            ];
+        }
+        if ($user->can('viewAny', Sale::class)) {
+            $mainNaveItemsArray[] = [
                 'name' => 'Sales',
                 'icon' => 'tables',
                 'subItems' => [
-                    ['name' => 'Shop Sales', 'path' => '/shop-sales', 'pro' => false],
-                    ['name' => 'Branch Sales', 'path' => '/branch-sales', 'pro' => false],
-                    ['name' => 'Master Sales', 'path' => '/master-sales', 'pro' => false],
-                    ['name' => 'Sales Report', 'path' => '/sales-report', 'pro' => false],
+                    ['name' => 'Shop Sales', 'path' => '/sales/shop-sales', 'pro' => false],
+                    ['name' => 'Branch Sales', 'path' => '/sales/branch-sales', 'pro' => false],
+                    ['name' => 'Master Sales', 'path' => '/sales/master-sales', 'pro' => false],
+                    ['name' => 'Sales Report', 'path' => '/sales/sales-report', 'pro' => false],
 
                 ],
-            ],
-            [
+            ];
+        }
+
+        if ($user->can('viewAny', User::class)) {
+            $mainNaveItemsArray[] = [
                 'name' => 'Management',
                 'icon' => 'pages',
                 'subItems' => [
+                    ['name' => 'Shops', 'path' => '/shops', 'pro' => false],
+                    ['name' => 'Branches', 'path' => '/branches', 'pro' => false],
                     ['name' => 'System Users', 'path' => '/view_users', 'pro' => false],
                     ['name' => 'Create User', 'path' => '/create-user', 'pro' => false],
                 ],
-            ],
-        ];
+            ];
+        }
+
+        return $mainNaveItemsArray;
     }
 
     public static function getOthersItems()

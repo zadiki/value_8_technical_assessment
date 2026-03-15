@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ProductServiceInterface;
+use App\Interfaces\ProductServiceInterface;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller

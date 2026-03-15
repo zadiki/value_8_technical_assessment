@@ -8,6 +8,16 @@ use App\Models\User;
 
 class InventoryPolicy
 {
+    public function viewAny($user)
+    {
+        return in_array($user->role, [User::ROLE_ADMINISTRATOR, User::ROLE_SHOP_MANAGER, User::ROLE_BRANCH_MANAGER]);
+    }
+
+    public function viewMasterInventory($user)
+    {
+        return in_array($user->role, [User::ROLE_ADMINISTRATOR]);
+    }
+
     public function moveStock(User $user, Shop $fromShop, Shop $toShop, StockMovement $movement): bool
     {
         // 1. Administrators have global access across all branches

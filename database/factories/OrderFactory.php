@@ -20,8 +20,10 @@ class OrderFactory extends Factory
         return [
             //
             'lpo_number' => fake()->unique()->numerify('LPO-#####'),
-            'shop_id' => null,
-            'branch_id' => null,
+            'order_type' => fake()->randomElement([Order::ORDER_TYPE_SHOP_ORDER, Order::ORDER_TYPE_BRANCH_ORDER, Order::ORDER_TYPE_CENTRAL_WAREHOUSE_ORDER]),
+            'shop_id' => fake()->randomElement([1, 2, 3, 4, 5]),
+            'branch_id' => fake()->randomElement([1, 2, 3, 4, 5]),
+            'status' => fake()->randomElement([Order::STATUS_CREATED, Order::STATUS_CONFIRMED, Order::STATUS_CANCELLED, Order::STATUS_DISPATCHED, Order::STATUS_DELIVERED]),
             'ordered_by' => fake()->randomElement([1, 2, 3, 4, 5]),
             'created_at' => now(),
             'updated_at' => now(),

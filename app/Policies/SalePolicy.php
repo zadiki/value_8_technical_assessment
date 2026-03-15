@@ -8,6 +8,11 @@ use App\Models\User;
 
 class SalePolicy
 {
+    public function viewAny($user)
+    {
+        return in_array($user->role, [User::ROLE_ADMINISTRATOR, User::ROLE_SHOP_MANAGER, User::ROLE_BRANCH_MANAGER]);
+    }
+
     public function makesale(User $user, Shop $shop): bool
     {
         // Shop Managers can only make sales from their own shop

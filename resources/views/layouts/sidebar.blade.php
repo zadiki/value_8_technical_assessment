@@ -64,7 +64,7 @@ $currentPath = request()->path();
         'justify-start'">
         <a href="/">
             <img x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen"
-                class="dark:hidden" src="/images/logo/logo.svg" alt="Logo" width="150" height="40" />
+                class="dark:hidden" src="/images/logo/logo.svg" alt="Logo" width="80" height="50" />
             <img x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen"
                 class="hidden dark:block" src="/images/logo/logo-dark.svg" alt="Logo" width="150"
                 height="40" />

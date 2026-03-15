@@ -13,4 +13,14 @@ interface OrderServiceInterface
     public function cancelOrder($orderId);
 
     public function createOrderDetails($orderId, $orderDetailsData);
+
+    public function updateOrderDetails($orderId, $orderDetailsData);
+
+    public function deleteOrderDetails($orderId, $orderDetailsId);
+
+    public function deleteOrder($orderId);
+
+    public function approveOrder($orderId);
+
+    public function getallOrders();
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -70,9 +71,9 @@ class User extends Authenticatable
     /**
      * Get the shop associated with the user.
      */
-    public function shop(): HasOne
+    public function shop(): BelongsTo
     {
-        return $this->hasOne(Shop::class);
+        return $this->belongsTo(Shop::class);
     }
 
     /**
