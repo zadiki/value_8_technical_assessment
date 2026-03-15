@@ -58,7 +58,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: pint   # only run deploy if Pint passes
+    needs: test   # only run deploy if Pint passes
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
