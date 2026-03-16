@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Models\Store;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -92,7 +93,9 @@ Route::middleware('auth')->prefix('sales')->group(function () {
 
 Route::middleware('auth')->prefix('stores')->group(function () {
     Route::get('/', function () {
-        return view('view-stores');
+        $stores = Store::paginate(10);
+
+        return view('view-stores', ['stores' => $stores]);
     })->name('stores');
     Route::get('/create-store', function () {
         // return view('view-create-store');
@@ -101,7 +104,9 @@ Route::middleware('auth')->prefix('stores')->group(function () {
 
 Route::middleware('auth')->prefix('branches')->group(function () {
     Route::get('/', function () {
-        return view('view-branches');
+        $branches = Branch::paginate(10);
+
+        return view('view-branches', ['branches' => $branches]);
     })->name('branches');
     Route::get('/create-branch', function () {
         // return view('view-create-branch');

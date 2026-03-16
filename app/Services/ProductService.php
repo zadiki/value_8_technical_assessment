@@ -35,7 +35,7 @@ class ProductService implements ProductServiceInterface
     public function getAllProducts()
     {
         // Implementation for getting all products
-        return Product::all();
+        return Product::simplePaginate(100);
     }
 
     public function deleteProduct($productId)
@@ -51,6 +51,6 @@ class ProductService implements ProductServiceInterface
     {
         // Implementation for getting products by active status
 
-        return Product::where('is_active', $isActive)->paginate(50);
+        return Product::where('is_active', $isActive)->latest()->simplePaginate(100);
     }
 }

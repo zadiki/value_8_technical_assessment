@@ -39,7 +39,7 @@ Our architecture follows a strictly hierarchical model to ensure data integrity 
 ## 🛠 Tech Stack
 
 * **Framework:** Laravel 12.x
-* **Language:** PHP 8.4+
+* **Language:** PHP 8.5+
 * **Database:** MySQL 8.0 (Production) / SQLite (Testing)
 * **DevOps:** GitHub Actions (Pint, PHPUnit, SSH Deploy)
 * **Styling:** Tailwind CSS & Livewire
