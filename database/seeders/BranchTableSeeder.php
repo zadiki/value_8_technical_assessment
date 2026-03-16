@@ -17,9 +17,6 @@ class BranchTableSeeder extends Seeder
         $branchManagerIds = User::where('role', User::ROLE_BRANCH_MANAGER)->pluck('id')->toArray();
         //
         Branch::factory(2)->create([
-            'name' => 'Branch 1',
-            'address' => '123 Main St, City, Country',
-            'phone' => '123-456-7890',
             'manager_id' => fake()->randomElement($branchManagerIds),
 
         ]);
