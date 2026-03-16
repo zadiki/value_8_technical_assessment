@@ -84,8 +84,8 @@ class MenuHelper
                 'subItems' => [
                     ['name' => 'Stores', 'path' => '/stores', 'pro' => false],
                     ['name' => 'Branches', 'path' => '/branches', 'pro' => false],
-                    ['name' => 'System Users', 'path' => '/view_users', 'pro' => false],
-                    ['name' => 'Create User', 'path' => '/create-user', 'pro' => false],
+                    ['name' => 'System Users', 'path' => '/users/allusers', 'pro' => false],
+                    ['name' => 'Create User', 'path' => '/users/create-user', 'pro' => false],
                 ],
             ];
         }

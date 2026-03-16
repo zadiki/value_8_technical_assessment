@@ -115,7 +115,7 @@ Route::middleware('auth')->prefix('branches')->group(function () {
 });
 
 Route::middleware('auth')->prefix('users')->group(function () {
-    Route::get('/', function () {
+    Route::get('/allusers', function () {
         return view('view-users');
     })->name('viewUsers');
     Route::get('/create-user', function () {
