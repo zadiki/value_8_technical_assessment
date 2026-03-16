@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Events\UserRegistered;
+
 
 class UserController extends Controller
 {
@@ -79,6 +81,7 @@ class UserController extends Controller
         ]);
 
         $user = $this->userService->createUser($request->only(['name', 'email', 'password', 'store_id', 'branch_id', 'role']));
+        UserRegistered::dispatch($user);
 
         return response()->json([
             'status' => 'success',
