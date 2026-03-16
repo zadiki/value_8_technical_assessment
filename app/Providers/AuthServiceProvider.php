@@ -15,19 +15,19 @@ class AuthServiceProvider extends ServiceProvider
     {
         //
     }
+    // needed for older laravel versions
+    // protected $policies = [
+    //     // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+    //     'App\Models\User' => 'App\Policies\UserPolicy',
+    //     'App\Models\Store' => 'App\Policies\StorePolicy',
+    //     'App\Models\Branch' => 'App\Policies\BranchPolicy',
+    //     'App\Models\Inventory' => 'App\Policies\InventoryPolicy',
+    //     'App\Models\Sale' => 'App\Policies\SalePolicy',
+    //     'App\Models\StockMovement' => 'App\Policies\StockMovementPolicy',
+    //     'App\Models\Order' => 'App\Policies\OrderPolicy',
+    //     'App\Models\DeliveryNote' => 'App\Policies\DeliveryNotePolicy',
 
-    protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
-        'App\Models\User' => 'App\Policies\UserPolicy',
-        'App\Models\Store' => 'App\Policies\StorePolicy',
-        'App\Models\Branch' => 'App\Policies\BranchPolicy',
-        'App\Models\Inventory' => 'App\Policies\InventoryPolicy',
-        'App\Models\Sale' => 'App\Policies\SalePolicy',
-        'App\Models\StockMovement' => 'App\Policies\StockMovementPolicy',
-        'App\Models\Order' => 'App\Policies\OrderPolicy',
-        'App\Models\DeliveryNote' => 'App\Policies\DeliveryNotePolicy',
-
-    ];
+    // ];
 
     /**
      * Bootstrap any authentication / authorization services.
