@@ -4,8 +4,8 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
-use App\Models\Store;
 use App\Models\Branch;
+use App\Models\Store;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
