@@ -4,7 +4,6 @@ namespace App\Listeners;
 
 use App\Events\UserRegistered;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class SendConfirmEmail implements ShouldQueue
 {
@@ -23,8 +22,15 @@ class SendConfirmEmail implements ShouldQueue
     {
         // send an email confirmation email to the user passed in the event
 
-          if (config('app.env') === 'local') {
-            Log::info("email sent to",[$event->user->email]);
-          }
+        if (config('app.env') === 'local') {
+            Log::info('email sent to', [$event->user->email]);
+        } else {
+
+            Mail::raw("Welcome {$event->user->name}!", function ($message) use ($event) {
+                $message->to($event->user->email)
+                    ->subject('Welcome to Our App please confirm your email by clicking the link below!');
+            });
+        }
+
     }
 }

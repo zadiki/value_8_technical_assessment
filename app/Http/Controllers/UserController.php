@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserRegistered;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Events\UserRegistered;
-
 
 class UserController extends Controller
 {

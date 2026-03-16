@@ -108,11 +108,10 @@ Route::middleware('auth')->prefix('branches')->group(function () {
     })->name('createBranch');
 });
 
-
 Route::middleware('auth')->prefix('users')->group(function () {
     Route::get('/', function () {
         return view('view-users');
-    })->name('viewUsers');  
+    })->name('viewUsers');
     Route::get('/create-user', function () {
         // return view('view-create-user');
     })->name('createUser');
@@ -121,11 +120,9 @@ Route::middleware('auth')->prefix('users')->group(function () {
 Route::middleware('auth')->prefix('products')->group(function () {
     Route::get('/active', function () {
         return view('view-active-products');
-    })->name('activeProducts'); 
+    })->name('activeProducts');
 
 });
-
-
 
 // json return routes
 Route::middleware('auth')->prefix('api')->group(function () {

@@ -2,10 +2,18 @@
 
 namespace App\Providers;
 
+use App\Events\UserRegistered;
+use App\Listeners\SendConfirmEmail;
 use Illuminate\Support\ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
 {
+    protected $listen = [
+        UserRegistered::class => [
+            SendConfirmEmail::class,
+        ],
+    ];
+
     /**
      * Register services.
      */
@@ -17,12 +25,5 @@ class EventServiceProvider extends ServiceProvider
     /**
      * Bootstrap services.
      */
-    public function boot(): void
-    {
-        //register 
-           Event::listen(
-            UserRegistered::class,
-            [SendConfirmEmail::class, 'handle']
-        );
-    }
+    public function boot(): void {}
 }

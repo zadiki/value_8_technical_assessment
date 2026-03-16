@@ -58,7 +58,7 @@ class MenuHelper
                     ['name' => 'Master Inventory', 'path' => '/inventory/master-inventory', 'pro' => false],
                     ['name' => 'Inventory Report', 'path' => '/inventory/inventory-report', 'pro' => false],
                     ['name' => 'Pending Adjustments', 'path' => '/inventory/pending-adjustments', 'pro' => false],
-                    ['name' => 'Products','path' => '/products/active', 'pro' => false]
+                    ['name' => 'Products', 'path' => '/products/active', 'pro' => false],
 
                 ],
             ];
