@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Models\Branch;
 use App\Models\StockMovement;
 use App\Models\Store;
 use App\Models\User;
@@ -10,7 +11,7 @@ class InventoryPolicy
 {
     public function viewAny($user)
     {
-        return in_array($user->role, [User::ROLE_ADMINISTRATOR, User::ROLE_SHOP_MANAGER, User::ROLE_BRANCH_MANAGER]);
+        return in_array($user->role, [User::ROLE_ADMINISTRATOR, User::ROLE_STORE_MANAGER, User::ROLE_BRANCH_MANAGER]);
     }
 
     public function viewMasterInventory($user)
@@ -52,8 +53,9 @@ class InventoryPolicy
         return $user->role === User::ROLE_ADMINISTRATOR;
     }
 
-    public function viewStoreInventory(User $user, Store $store): bool
+    public function viewStoreInventory(User $user,  $store): bool
     {
+        return true;
         // 1. Administrators have global access across all branches
         if ($user->role === User::ROLE_ADMINISTRATOR) {
             return true;
@@ -62,7 +64,7 @@ class InventoryPolicy
             return true;
         }
 
-        if ($user->role === User::ROLE_SHOP_MANAGER && $user->store_id === $store->id) {
+        if ($user->role === User::ROLE_STORE_MANAGER && $user->store_id === $store->id) {
             return true;
         }
 

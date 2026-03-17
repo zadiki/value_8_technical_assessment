@@ -13,6 +13,7 @@ class InventoryService implements InventoryServiceInterface
     // Implementation for inventory management
     public function getAllStoreInventory($storeId)
     {
+
         // Logic to retrieve inventory for a specific store
         $storeInventory = Inventory::where('store_id', $storeId)->paginate(50);
 

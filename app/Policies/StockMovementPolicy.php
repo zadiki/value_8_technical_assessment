@@ -6,7 +6,7 @@ class StockMovementPolicy
 {
     public function viewAny($user)
     {
-        return in_array($user->role, [User::ROLE_ADMINISTRATOR, User::ROLE_SHOP_MANAGER, User::ROLE_BRANCH_MANAGER]);
+        return in_array($user->role, [User::ROLE_ADMINISTRATOR, User::ROLE_STORE_MANAGER, User::ROLE_BRANCH_MANAGER]);
     }
 
     public function viewAllStockmovements(User $user): bool
@@ -20,7 +20,7 @@ class StockMovementPolicy
 
     public function viewStoreStockmovements(User $user, Store $store): bool
     {
-        if ($user->role === User::ROLE_SHOP_MANAGER) {
+        if ($user->role === User::ROLE_STORE_MANAGER) {
             return $user->store_id === $store->id; // Store Managers can view stock movements related to their store
         }
         if ($user->role === User::ROLE_BRANCH_MANAGER) {

@@ -9,13 +9,13 @@ class OrderPolicy
 {
     public function viewAny($user)
     {
-        return in_array($user->role, [User::ROLE_ADMINISTRATOR, User::ROLE_SHOP_MANAGER, User::ROLE_BRANCH_MANAGER]);
+        return in_array($user->role, [User::ROLE_ADMINISTRATOR, User::ROLE_STORE_MANAGER, User::ROLE_BRANCH_MANAGER]);
     }
 
     public function view(User $user, Order $order): bool
     {
         // Store Managers can only view orders from their own store
-        if ($user->role === User::ROLE_SHOP_MANAGER) {
+        if ($user->role === User::ROLE_STORE_MANAGER) {
             return $user->store_id === $order->store_id;
         }
 

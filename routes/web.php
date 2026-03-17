@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Models\Branch;
 use App\Models\Store;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -35,7 +37,6 @@ Route::middleware('auth')->group(function () {
         ->name('logout');
     Route::get('register', [AuthenticatedSessionController::class, 'createRegistration'])
         ->name('register');
-
 });
 
 // order view routes
@@ -49,14 +50,12 @@ Route::middleware('auth')->prefix('order')->group(function () {
     Route::get('/edit-order', function () {
         return view('view-edit-order');
     })->name('editOrder');
-
 });
 
 Route::middleware('auth')->prefix('delivery-notes')->group(function () {
     Route::get('/', function () {
         return view('view-delivery-note');
     })->name('deliveryNotes');
-
 });
 
 Route::middleware('auth')->prefix('inventory')->group(function () {
@@ -116,18 +115,23 @@ Route::middleware('auth')->prefix('branches')->group(function () {
 
 Route::middleware('auth')->prefix('users')->group(function () {
     Route::get('/allusers', function () {
-        return view('view-users');
+        $users = User::paginate(10);
+        return view('view-users', ['users' => $users]);
     })->name('viewUsers');
     Route::get('/create-user', function () {
-        // return view('view-create-user');
+        $stores = Store::all();
+        return view('view-create-user', ['stores' => $stores]);
     })->name('createUser');
+
+    Route::get('/edit-user', function () {
+        return view('view-edit-user');
+    })->name('editUser');
 });
 
 Route::middleware('auth')->prefix('products')->group(function () {
     Route::get('/active', function () {
         return view('view-active-products');
     })->name('activeProducts');
-
 });
 
 // json return routes
@@ -143,5 +147,11 @@ Route::middleware('auth')->prefix('api')->group(function () {
 
     // order view jsons
     Route::get('/order/all-orders', [OrderController::class, 'getAllOrders'])->name('allOrders');
-
+    // inventory view json
+    Route::get('/inventory/store-inventory', [InventoryController::class, 'getAllStoreInventory'])
+        ->name('storeInventory');
+    Route::get('/inventory/branch-inventory', [InventoryController::class, 'getBranchInventory'])
+        ->name('branchInventory');
+    Route::get('/inventory/master-inventory', [InventoryController::class, 'getMasterInventory'])
+        ->name('masterInventory');
 });

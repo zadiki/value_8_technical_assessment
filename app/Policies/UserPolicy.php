@@ -8,7 +8,7 @@ class UserPolicy
 {
     public function viewAny($user)
     {
-        return in_array($user->role, [User::ROLE_ADMINISTRATOR, User::ROLE_SHOP_MANAGER]);
+        return in_array($user->role, [User::ROLE_ADMINISTRATOR, User::ROLE_STORE_MANAGER]);
     }
 
     public function view($user, $model)

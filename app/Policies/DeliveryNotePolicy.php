@@ -9,13 +9,13 @@ class DeliveryNotePolicy
 {
     public function viewAny($user)
     {
-        return in_array($user->role, [User::ROLE_ADMINISTRATOR, User::ROLE_SHOP_MANAGER, User::ROLE_BRANCH_MANAGER]);
+        return in_array($user->role, [User::ROLE_ADMINISTRATOR, User::ROLE_STORE_MANAGER, User::ROLE_BRANCH_MANAGER]);
     }
 
     public function view(User $user, DeliveryNote $deliveryNote): bool
     {
         // Store Managers can only view delivery notes from their own store
-        if ($user->role === User::ROLE_SHOP_MANAGER) {
+        if ($user->role === User::ROLE_STORE_MANAGER) {
             return $user->store_id === $deliveryNote->store_id;
         }
 

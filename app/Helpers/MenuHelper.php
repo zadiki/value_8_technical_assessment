@@ -13,7 +13,6 @@ class MenuHelper
 {
     public static function getMainNavItems()
     {
-        $user = Auth::user();
 
         $mainNavItemsArray = [
             [
@@ -23,11 +22,11 @@ class MenuHelper
             ],
         ];
 
-        if (! $user) {
+        if (!Auth::user()) {
             return $mainNavItemsArray;
         }
 
-        if ($user->can('viewAny', Order::class)) {
+        if (Auth::user()?->can('viewAny', Order::class)) {
             $mainNavItemsArray[] = [
                 'icon' => 'dashboard',
                 'name' => 'Orders',
@@ -40,7 +39,7 @@ class MenuHelper
             ];
         }
 
-        if ($user->can('viewAny', Product::class)) {
+        if (Auth::user()?->can('viewAny', Product::class)) {
             $mainNavItemsArray[] = [
                 'icon' => 'calendar',
                 'name' => 'Products',
@@ -52,7 +51,7 @@ class MenuHelper
 
             ];
         }
-        if ($user->can('viewAny', Inventory::class)) {
+        if (Auth::user()?->can('viewAny', Inventory::class)) {
             $mainNavItemsArray[] =
                 [
                     'icon' => 'forms',
@@ -68,7 +67,7 @@ class MenuHelper
                     ],
                 ];
         }
-        if ($user->can('viewAny', Sale::class)) {
+        if (Auth::user()?->can('viewAny', Sale::class)) {
             $mainNavItemsArray[] = [
                 'name' => 'Sales',
                 'icon' => 'tables',
@@ -82,7 +81,7 @@ class MenuHelper
             ];
         }
 
-        if ($user->can('viewAny', User::class)) {
+        if (Auth::user()?->can('viewAny', User::class)) {
             $mainNavItemsArray[] = [
                 'name' => 'Management',
                 'icon' => 'pages',
