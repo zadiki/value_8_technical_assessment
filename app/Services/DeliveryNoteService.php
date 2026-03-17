@@ -3,6 +3,9 @@
 namespace App\Services;
 
 use App\Interfaces\DeliveryNoteServiceInterface;
+use App\Models\DeliveryNote;
+use App\Models\OrderDetail;
+use Illuminate\Support\Facades\Gate;
 
 class DeliveryNoteService implements DeliveryNoteServiceInterface
 {
@@ -34,5 +37,31 @@ class DeliveryNoteService implements DeliveryNoteServiceInterface
                 'total_price' => 100.00,
             ],
         ];
+    }
+
+    public function getDeliveryNoteDetails($deliveryId)
+    {
+        return OrderDetail::with('product')->where('delivery_note_id', $deliveryId)->get();
+    }
+
+    public function updateDeliveryNote($deliveryId, $deliveryData)
+    {
+        $deliveryNote = DeliveryNote::findOrFail($deliveryId);
+
+        Gate::authorize('editDeliveryNote', $deliveryNote);
+
+        $deliveryNote->update($deliveryData);
+
+        return [
+            'status' => 'success',
+            'message' => 'Delivery note updated successfully',
+            'data' => $deliveryNote,
+        ];
+    }
+
+    public function deleteDeliveryNote($deliveryId)
+    {
+        $deliveryNote = DeliveryNote::findOrFail($deliveryId);
+        $deliveryNote->delete();
     }
 }

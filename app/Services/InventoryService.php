@@ -3,6 +3,10 @@
 namespace App\Services;
 
 use App\Interfaces\InventoryServiceInterface;
+use App\Models\Inventory;
+use App\Models\Sale;
+use App\Models\SaleDetail;
+use App\Models\StockMovement;
 
 class InventoryService implements InventoryServiceInterface
 {
@@ -67,14 +71,14 @@ class InventoryService implements InventoryServiceInterface
         return $centralWarehouseInventory;
     }
 
-    public static function createStockMovementAfterSale(Saledetail $saleDetail, Sale $sale, Inventory $inventory)
+    public static function createStockMovementAfterSale(SaleDetail $saleDetail, Sale $sale, Inventory $inventory)
     {
         $stockMovement = new StockMovement;
         $stockMovement->store_id = $sale->store_id;
         $stockMovement->product_id = $saleDetail->product_id;
         $stockMovement->quantity_changed = -$saleDetail->quantity;
         $stockMovement->transaction_type = StockMovement::TRANSACTION_TYPE_OUT;
-        $stockMovement->reference_type = StockMovement::REFERENCE_TYPE_SALE_OUT;
+        $stockMovement->reference_type = StockMovement::REFERENCE_TYPE_STORE_SALE_OUT;
         $stockMovement->reference_id = $saleDetail->id;
         $stockMovement->approval_status = StockMovement::APPROVAL_STATUS_APPROVED;
         $stockMovement->created_by = $sale->created_by;

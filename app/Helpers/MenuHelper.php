@@ -5,6 +5,7 @@ namespace App\Helpers;
 use App\Models\Inventory;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Sale;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +15,7 @@ class MenuHelper
     {
         $user = Auth::user();
 
-        $mainNaveItemsArray = [
+        $mainNavItemsArray = [
             [
                 'icon' => 'dashboard',
                 'name' => 'Dashboard',
@@ -22,8 +23,12 @@ class MenuHelper
             ],
         ];
 
+        if (! $user) {
+            return $mainNavItemsArray;
+        }
+
         if ($user->can('viewAny', Order::class)) {
-            $mainNaveItemsArray[] = [
+            $mainNavItemsArray[] = [
                 'icon' => 'dashboard',
                 'name' => 'Orders',
                 'subItems' => [
@@ -36,7 +41,7 @@ class MenuHelper
         }
 
         if ($user->can('viewAny', Product::class)) {
-            $mainNaveItemsArray[] = [
+            $mainNavItemsArray[] = [
                 'icon' => 'calendar',
                 'name' => 'Products',
                 'subItems' => [
@@ -48,23 +53,23 @@ class MenuHelper
             ];
         }
         if ($user->can('viewAny', Inventory::class)) {
-            $mainNaveItemsArray[] =
-            [
-                'icon' => 'forms',
-                'name' => 'Inventory',
-                'subItems' => [
-                    ['name' => 'Store Inventory', 'path' => '/inventory/store-inventory', 'pro' => false],
-                    ['name' => 'Branch Inventory', 'path' => '/inventory/branch-inventory', 'pro' => false],
-                    ['name' => 'Master Inventory', 'path' => '/inventory/master-inventory', 'pro' => false],
-                    ['name' => 'Inventory Report', 'path' => '/inventory/inventory-report', 'pro' => false],
-                    ['name' => 'Pending Adjustments', 'path' => '/inventory/pending-adjustments', 'pro' => false],
-                    ['name' => 'Products', 'path' => '/products/active', 'pro' => false],
+            $mainNavItemsArray[] =
+                [
+                    'icon' => 'forms',
+                    'name' => 'Inventory',
+                    'subItems' => [
+                        ['name' => 'Store Inventory', 'path' => '/inventory/store-inventory', 'pro' => false],
+                        ['name' => 'Branch Inventory', 'path' => '/inventory/branch-inventory', 'pro' => false],
+                        ['name' => 'Master Inventory', 'path' => '/inventory/master-inventory', 'pro' => false],
+                        ['name' => 'Inventory Report', 'path' => '/inventory/inventory-report', 'pro' => false],
+                        ['name' => 'Pending Adjustments', 'path' => '/inventory/pending-adjustments', 'pro' => false],
+                        ['name' => 'Products', 'path' => '/products/active', 'pro' => false],
 
-                ],
-            ];
+                    ],
+                ];
         }
         if ($user->can('viewAny', Sale::class)) {
-            $mainNaveItemsArray[] = [
+            $mainNavItemsArray[] = [
                 'name' => 'Sales',
                 'icon' => 'tables',
                 'subItems' => [
@@ -78,7 +83,7 @@ class MenuHelper
         }
 
         if ($user->can('viewAny', User::class)) {
-            $mainNaveItemsArray[] = [
+            $mainNavItemsArray[] = [
                 'name' => 'Management',
                 'icon' => 'pages',
                 'subItems' => [
@@ -90,7 +95,7 @@ class MenuHelper
             ];
         }
 
-        return $mainNaveItemsArray;
+        return $mainNavItemsArray;
     }
 
     public static function getOthersItems()

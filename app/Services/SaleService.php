@@ -3,6 +3,12 @@
 namespace App\Services;
 
 use App\Interfaces\SaleServiceInterface;
+use App\Models\Inventory;
+use App\Models\Sale;
+use App\Models\SaleDetail;
+use Exception;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class SaleService implements SaleServiceInterface
 {
@@ -16,7 +22,7 @@ class SaleService implements SaleServiceInterface
 
             foreach ($saleData['sale_details'] as $item) {
 
-                SaleDetail::create([
+                $saleDetail = SaleDetail::create([
                     'sale_id' => $sale->id,
                     'product_id' => $item['product_id'],
                     'quantity' => $item['quantity'],

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Events\UserRegistered;
+use App\Interfaces\UserServiceInterface;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -19,10 +21,9 @@ class UserController extends Controller
     public function getAllActiveUsers(Request $request)
     {
 
-        $this->authorize('viewAny', User::class);
-        $this->validate($request, [
-            'page' => 'integer|min:1',
-        ]);
+        $validated = $request->validate(['page' => 'integer|min:1']);
+        Gate::authorize('viewAny', User::class);
+
         $users = $this->userService->getAllActiveUsers();
 
         return response()->json($users);
@@ -30,10 +31,10 @@ class UserController extends Controller
 
     public function getAllUsers(Request $request)
     {
-        $this->authorize('view', User::class);
-        $this->validate($request, [
-            'page' => 'integer|min:1',
-        ]);
+
+        Gate::authorize('viewAny', User::class);
+
+        $validated = $request->validate(['page' => 'integer|min:1']);
         $users = $this->userService->getAllUsers();
 
         return response()->json($users);
@@ -41,10 +42,10 @@ class UserController extends Controller
 
     public function disableUser(Request $request)
     {
-        $this->authorize('update', User::class);
-        $this->validate($request, [
-            'id' => 'required|integer|exists:users,id',
-        ]);
+
+        Gate::authorize('update', User::class);
+
+        $validated = $request->validate(['id' => 'required|integer|exists:users,id']);
         $this->userService->disableUser($request->id);
 
         return response()->json([
@@ -55,10 +56,10 @@ class UserController extends Controller
 
     public function enableUser(Request $request)
     {
-        $this->authorize('update', User::class);
-        $this->validate($request, [
-            'id' => 'required|integer|exists:users,id',
-        ]);
+
+        Gate::authorize('update', User::class);
+
+        $validated = $request->validate(['id' => 'required|integer|exists:users,id']);
         $this->userService->enableUser($request->id);
 
         return response()->json([
@@ -69,8 +70,10 @@ class UserController extends Controller
 
     public function createUser(Request $request)
     {
-        $this->authorize('create', User::class);
-        $this->validate($request, [
+
+        Gate::authorize('create', User::class);
+
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
@@ -91,8 +94,8 @@ class UserController extends Controller
 
     public function editUser(Request $request)
     {
-        $this->authorize('update', User::class);
-        $this->validate($request, [
+        Gate::authorize('update', User::class);
+        $validated = $request->validate([
             'id' => 'required|integer|exists:users,id',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,'.$request->id,
