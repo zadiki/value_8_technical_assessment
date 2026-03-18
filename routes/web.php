@@ -116,10 +116,12 @@ Route::middleware('auth')->prefix('branches')->group(function () {
 Route::middleware('auth')->prefix('users')->group(function () {
     Route::get('/allusers', function () {
         $users = User::paginate(10);
+
         return view('view-users', ['users' => $users]);
     })->name('viewUsers');
     Route::get('/create-user', function () {
         $stores = Store::all();
+
         return view('view-create-user', ['stores' => $stores]);
     })->name('createUser');
 

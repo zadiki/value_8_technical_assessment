@@ -53,7 +53,7 @@ class InventoryPolicy
         return $user->role === User::ROLE_ADMINISTRATOR;
     }
 
-    public function viewStoreInventory(User $user,  $store): bool
+    public function viewStoreInventory(User $user, $store): bool
     {
         return true;
         // 1. Administrators have global access across all branches

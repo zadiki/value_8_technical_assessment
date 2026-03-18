@@ -79,7 +79,7 @@ class UserController extends Controller
             'password' => 'required|string|min:8',
             'store_id' => 'nullable|integer|exists:stores,id',
             'branch_id' => 'nullable|integer|exists:branches,id',
-            'role' => 'required|string|in:' . User::ROLE_ADMINISTRATOR . ',' . User::ROLE_STORE_MANAGER . ',' . User::ROLE_BRANCH_MANAGER,
+            'role' => 'required|string|in:'.User::ROLE_ADMINISTRATOR.','.User::ROLE_STORE_MANAGER.','.User::ROLE_BRANCH_MANAGER,
         ]);
 
         $user = $this->userService->createUser($request->only(['name', 'email', 'password', 'store_id', 'branch_id', 'role']));
@@ -98,7 +98,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'id' => 'required|integer|exists:users,id',
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $request->id,
+            'email' => 'required|string|email|max:255|unique:users,email,'.$request->id,
         ]);
 
         $this->userService->editUser($request->only(['name', 'email', 'store_id', 'branch_id', 'role']), $request->id);

@@ -22,7 +22,7 @@ class MenuHelper
             ],
         ];
 
-        if (!Auth::user()) {
+        if (! Auth::user()) {
             return $mainNavItemsArray;
         }
 

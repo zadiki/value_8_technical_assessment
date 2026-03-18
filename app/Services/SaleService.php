@@ -35,18 +35,18 @@ class SaleService implements SaleServiceInterface
                     ->where('active_status', true)
                     ->where('location_type', Inventory::INVENTORY_LOCATION_TYPE_SHOP)->first();
                 if (! $inventory || $inventory->quantity < $item['quantity']) {
-                    throw new Exception('Insufficient inventory for product ID: ' . $item['product_id']);
+                    throw new Exception('Insufficient inventory for product ID: '.$item['product_id']);
                 }
                 $inventoryRequested = $inventory->quantity;
 
-                $affected =  DB::table('inventory')->where('id', $inventory->id)
-                    ->where("quantity", ">=", $inventoryRequested)
+                $affected = DB::table('inventory')
+                    ->where('id', $inventory->id)
+                    ->where('quantity', '>=', $inventoryRequested)
                     ->decrement('quantity', $item['quantity']);
 
-                if (!$affected) {
-                    throw new Exception("Insufficient inventory for product ID: " . $item['product_id']);
+                if (! $affected) {
+                    throw new Exception('Insufficient inventory for product ID: '.$item['product_id']);
                 }
-
 
                 $inventory->save();
                 InventoryService::createStockMovementAfterSale($saleDetail, $sale, $inventory);
