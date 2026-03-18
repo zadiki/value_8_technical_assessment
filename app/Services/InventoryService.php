@@ -74,7 +74,7 @@ class InventoryService implements InventoryServiceInterface
 
     public static function createStockMovementAfterSale(SaleDetail $saleDetail, Sale $sale, Inventory $inventory)
     {
-        $stockMovement = new StockMovement;
+        $stockMovement = new StockMovement();
         $stockMovement->store_id = $sale->store_id;
         $stockMovement->product_id = $saleDetail->product_id;
         $stockMovement->quantity_changed = -$saleDetail->quantity;
