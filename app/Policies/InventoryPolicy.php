@@ -55,6 +55,7 @@ class InventoryPolicy
         return $user->role === User::ROLE_ADMINISTRATOR;
     }
 
+
     public function viewStoreInventory(User $user, $store): bool
     {
         return true;
